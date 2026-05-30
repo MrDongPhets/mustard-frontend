@@ -1,0 +1,21 @@
+{
+  "name": "MUSTARD Digitals",
+  "short_name": "Mustard",
+  "description": "Creative digital agency specializing in branding, web design, and digital marketing solutions.",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#F5C518",
+  "background_color": "#1a1a1a",
+  "display": "standalone",
+  "start_url": "/"
+}
