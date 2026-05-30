@@ -35,6 +35,85 @@
     <meta name="twitter:description" content="Creative digital agency specializing in branding, logo design, web design, and digital marketing solutions." />
     <meta name="twitter:image" content="https://mustarddigitals.com/favicon.png" />
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://mustarddigitals.com/#organization",
+          "name": "MUSTARD Digitals",
+          "url": "https://mustarddigitals.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://mustarddigitals.com/favicon.png"
+          },
+          "description": "MUSTARD Digitals is a Philippines-based creative digital agency specializing in branding, logo design, web design, video production, and digital marketing.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "PH"
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://mustarddigitals.com/#website",
+          "url": "https://mustarddigitals.com/",
+          "name": "MUSTARD Digitals",
+          "description": "Creative digital agency helping businesses grow through design, web development, and digital marketing.",
+          "publisher": {
+            "@id": "https://mustarddigitals.com/#organization"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "MUSTARD Digitals Site Navigation",
+          "itemListElement": [
+            {
+              "@type": "SiteLinksSearchBox",
+              "target": "https://mustarddigitals.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "url": "https://mustarddigitals.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "description": "Learn about MUSTARD Digitals — our story, values, and the team behind the brand.",
+              "url": "https://mustarddigitals.com/about"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Services",
+              "description": "Web design, branding, video editing, content creation, and administrative support.",
+              "url": "https://mustarddigitals.com/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Portfolio",
+              "description": "Browse our portfolio of branding, web design, and content creation projects.",
+              "url": "https://mustarddigitals.com/portfolio"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Contact",
+              "description": "Get in touch with MUSTARD Digitals to start your project or claim your free trial.",
+              "url": "https://mustarddigitals.com/contact"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
