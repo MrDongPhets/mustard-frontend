@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://mustard-backend.onrender.com/api/:path*"
+    }
+  ]
+}
