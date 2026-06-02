@@ -355,6 +355,13 @@
 }
 .ft-toast-close:hover { color: #fff; }
 
+.ft-toast-error .ft-toast-inner {
+  border-left-color: #e53e3e;
+}
+.ft-toast-error .ft-toast-icon {
+  color: #e53e3e;
+}
+
 @keyframes ft-slide-in {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }

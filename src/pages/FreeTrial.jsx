@@ -22,6 +22,12 @@ export default function FreeTrial() {
     return () => clearTimeout(t);
   }, [success]);
 
+  useEffect(() => {
+    if (!error) return;
+    const t = setTimeout(() => setError(''), 5000);
+    return () => clearTimeout(t);
+  }, [error]);
+
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
@@ -54,6 +60,20 @@ export default function FreeTrial() {
             <div className="ft-toast-sub">Check your email for confirmation and book your discovery call.</div>
           </div>
           <button className="ft-toast-close" onClick={() => setSuccess(false)}>
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    )}
+    {error && (
+      <div className="ft-toast ft-toast-error">
+        <div className="ft-toast-inner">
+          <i className="fas fa-exclamation-circle ft-toast-icon"></i>
+          <div>
+            <div className="ft-toast-title">Submission failed</div>
+            <div className="ft-toast-sub">{error}</div>
+          </div>
+          <button className="ft-toast-close" onClick={() => setError('')}>
             <i className="fas fa-times"></i>
           </button>
         </div>
@@ -114,7 +134,6 @@ export default function FreeTrial() {
             After submitting, book your discovery call to confirm your trial.
           </p>
 
-          {error && <div className="ft-alert error">{error}</div>}
 
           <form onSubmit={handleSubmit}>
             <div className="ft-form-grid">
