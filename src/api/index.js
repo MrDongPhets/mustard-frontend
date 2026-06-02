@@ -47,6 +47,18 @@ export function getTestimonials(limit = null) {
   return request(`${BASE}/testimonials${params}`);
 }
 
+/** POST /api/free-trial — submit a free trial request */
+export async function submitFreeTrial(data) {
+  const res = await fetch(`${BASE}/free-trial`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const result = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(result.error || 'Failed to submit trial request');
+  return result;
+}
+
 /** POST to Web3Forms — works without PHP backend */
 export async function submitContact(data) {
   const res = await fetch('https://api.web3forms.com/submit', {

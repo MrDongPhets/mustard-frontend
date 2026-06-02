@@ -13,6 +13,7 @@ import PortfolioDetail from './pages/PortfolioDetail';
 import Services        from './pages/Services';
 import About           from './pages/About';
 import Contact         from './pages/Contact';
+import FreeTrial       from './pages/FreeTrial';
 import NotFound        from './pages/NotFound';
 
 import WebDesign        from './pages/services/WebDesign';
@@ -49,6 +50,7 @@ export default function App() {
         <Route path="/services/admin-support"       element={<AdminSupport />} />
         <Route path="/about"          element={<About />} />
         <Route path="/contact"        element={<Contact />} />
+        <Route path="/free-trial"     element={<FreeTrial />} />
         <Route path="*"               element={<NotFound />} />
       </Routes>
       <Footer />

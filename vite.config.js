@@ -7,7 +7,7 @@ export default defineConfig({
     // Proxy /api calls to local PHP server (XAMPP/Laragon on port 80)
     proxy: {
       '/api': {
-        target: 'http://portfolio.localhost',
+        target: 'http://localhost:3001',
         changeOrigin: true,
       },
     },

@@ -113,7 +113,7 @@ export default function Home() {
           </p>
 
           <div className="hero-cta-buttons" data-aos="fade-up" data-aos-delay="400">
-            <button className="btn btn-primary-modern hero-btn" onClick={() => navigate('/contact')}>
+            <button className="btn btn-primary-modern hero-btn" onClick={() => navigate('/free-trial')}>
               {hero?.cta_text || 'Claim Your Free Trial'} <i className="fas fa-arrow-right"></i>
             </button>
           </div>
