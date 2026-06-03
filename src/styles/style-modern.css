@@ -1706,6 +1706,20 @@
   resize: vertical;
   min-height: 140px;
 }
+@media (max-width: 768px) {
+  .contact-modern .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-modern .contact-info,
+  .contact-modern .contact-form-modern {
+    width: 100%;
+  }
+
+  .contact-modern .form-row {
+    flex-direction: column;
+  }
+}
 
 .btn-block {
   width: 100%;

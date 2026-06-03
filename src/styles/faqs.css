@@ -208,14 +208,32 @@ body[data-theme='light'] .faq-section {
   padding: 0 32px 34px;
 }
 
-.faq-answer p {
-  max-width: 900px;
-
+.faq-answer-content p,
+.faq-answer-content ul,
+.faq-answer-content li {
   font-size: 17px;
-
   line-height: 1.65;
-
   color: var(--text-secondary);
+}
+
+.faq-answer-content p {
+  margin-bottom: 14px;
+  max-width: 900px;
+}
+
+.faq-answer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer-content ul {
+  padding-left: 0;
+  list-style-position: inside;
+  margin: 10px 30px 14px;
+  max-width: 900px;
+}
+
+.faq-answer-content li {
+  margin-bottom: 6px;
 }
 
 /* CTA */
@@ -343,4 +361,5 @@ body[data-theme='light'] .faq-section {
     width: 100%;
     text-align: center;
   }
+
 }

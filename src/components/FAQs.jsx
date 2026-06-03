@@ -6,60 +6,12 @@ const faqItems = [
     question:
       'How is Mustard Digitals different from hiring a freelancer?',
     answer:
-      'Freelancers are individuals — one skill, one person, often juggling multiple clients. Mustard Digitals is a coordinated team covering web design, branding, video editing, content, and VA support under one roof. You get consistent quality, a dedicated point of contact, and zero coordination headache. Think of us as your digital team — without the cost of hiring one in-house.',
+      'Freelancers are individuals — one skill, one person, often juggling multiple clients. Mustard Digitals is a coordinated team covering web design, branding, video editing, content, and VA support under one roof. You get consistent quality, a dedicated point of contact, and zero coordination headache. Think of us as your digital team without the cost of hiring one in-house.',
   },
 
   {
   question: 'How does your pricing and packages work?',
-  answer: (
-    <>
-      <p>
-        We work on a flexible hourly package
-        model. You purchase a block of hours
-        and we apply them toward whichever
-        services you need.
-      </p>
-
-      <p>Our hourly rates vary by service type:</p>
-
-      <ul>
-        <li>Graphics & Branding — $10/hr</li>
-        <li>Video Editing — $10/hr</li>
-        <li>
-          Website Design & Development —
-          $12/hr
-        </li>
-        <li>
-          Customized Tech Solutions —
-          $15/hr
-        </li>
-        <li>Admin & VA Support — $7/hr</li>
-      </ul>
-
-      <p>Choose from three package tiers:</p>
-
-      <ul>
-        <li>
-          20 Hours — Standard rate,
-          consumable within the month
-        </li>
-        <li>
-          40 Hours — 10% off (Most
-          Popular), consumable within the
-          month
-        </li>
-        <li>
-          80 Hours — 20% off (Best Value),
-          consumable within the month
-        </li>
-      </ul>
-
-      <p>
-        No hidden fees. You pay for hours.
-        We deliver value.
-      </p>
-    </>
-  ),
+  answer:' We work on a flexible hourly package model. You purchase a block of hours and we apply them toward whicheverservices you need.',
 },
 
   {
@@ -73,14 +25,14 @@ const faqItems = [
     question:
       'Is there really a free trial? What does it include?',
     answer:
-      'Yes — completely free. We offer a 2-hour trial so you can experience the quality of our work before making any commitment. After your discovery call, submit a real task from any of our service areas — graphics, video, admin, web, or tech — and we’ll deliver real output within the trial hours. No payment required. No obligation to continue. Limited to one trial per business.',
+      'Yes, completely free. We offer a 2-hour trial so you can experience the quality of our work before making any commitment. After your discovery call, submit a real task from any of our service areas — graphics, video, admin, web, or tech and we’ll deliver real output within the trial hours. No payment required. No obligation to continue. Limited to one trial per business.',
   },
 
   {
     question:
       'Do unused hours roll over to the next month?',
     answer:
-      'All packages — 20, 40, and 80 hours — are consumable within the month of purchase. We recommend planning your projects in advance so you get the most value out of every hour. Not sure how to maximize your hours? We’ll help you map it out during the discovery call.',
+      'All packages — 20, 40, and 80 hours are consumable within the month of purchase. We recommend planning your projects in advance so you get the most value out of every hour. Not sure how to maximize your hours? We’ll help you map it out during the discovery call.',
   },
 
   {
@@ -92,24 +44,22 @@ const faqItems = [
 
   {
     question:
-      "What if I'm not happy with the output?",
-    answer:
-      "We include structured revision rounds so you have the opportunity to give feedback before final delivery. Our values of integrity and accountability mean we don't consider a project done until you're genuinely pleased with the result.",
-  },
-
-  {
-    question:
       "I'm a small business — is Mustard Digitals right for me?",
     answer:
       'Absolutely. Small businesses and entrepreneurs are exactly who we built this for. Our hourly package model means you only pay for what you need — no bloated agency retainers, no full-time hire overhead. Start with our free 2-hour trial and see the difference firsthand before committing to a package.',
   },
 
-  {
-    question:
-      'What does the process look like?',
-    answer:
-      'We follow a simple three-phase process we call Plant, Build, Grow. First we understand your goals through a discovery call — we align on scope, identify the right services, and estimate the hours needed. Then our team executes — designing, building, editing — tracking hours transparently as we go. Finally we deliver your files with a full walkthrough and close the project properly. Clean, clear, no surprises.',
-  },
+ {
+  question: 'What does the process look like?',
+  answer: (
+    <>
+      <p>We follow a simple three-phase process we call Plant, Build, Grow.</p>
+      <p>🌱 Plant – You can book a call for a FREE 2-hour trial task or choose to proceed directly with a package. We start by discussing your goals, project requirements, trial task details (if applicable), and how our team can best support your business.</p>
+      <p>🔨 Build – Our team executes the agreed scope of work, providing updates and maintaining clear communication throughout the process.</p>
+      <p>📈 Grow – We deliver the completed work, gather feedback, and discuss opportunities for ongoing support to help your business continue growing.</p>
+    </>
+  ),
+},
 
   {
     question:
@@ -198,12 +148,10 @@ export default function FAQs() {
                 </span>
               </button>
 
-              <div
-  className={`faq-answer ${
-    openIndex === index ? 'open' : ''
-  }`}
->
-  <p>{item.answer}</p>
+             <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
+  <div className="faq-answer-content">
+    {typeof item.answer === 'string' ? <p>{item.answer}</p> : item.answer}
+  </div>
 </div>
             </div>
           ))}

@@ -8,6 +8,7 @@ import mustardSeed from "../assets/mustard-seed.png";
 import '../styles/style-modern.css';
 import Pricing from '../components/Pricing.jsx';
 import FAQs from '../components/FAQs.jsx';
+import Testimonials from '../components/Testimonials';
 
 const STATIC_SERVICES = [
   {
@@ -51,13 +52,6 @@ const STATIC_STATS = [
   { icon: 'fa-heart',        num: '100%', label: 'Values-Driven',        desc: 'Integrity & excellence in every deliverable' },
 ];
 
-const FALLBACK_TESTIMONIALS = [
-  { id: 1, rating: 5, testimonial: '"Great project! people who truly understand the essence of brand design. They took time to get to know our team, our values, and our vision. I can\'t recommend them enough."', client_name: 'Sarah M.', company: 'CEO, Tech Startup' },
-  { id: 2, rating: 5, testimonial: '"I can\'t say enough great things about this design team! From our very first call, they were professional, creative, and genuinely excited about our project."', client_name: 'David J.', company: 'Marketing Director' },
-  { id: 3, rating: 5, testimonial: '"I can confidently say that our project exceeded all expectations thanks to the design agency. Their dedication to ensuring every detail was right."', client_name: 'Emma L.', company: 'Product Manager' },
-];
-
-
 function getInitials(name) {
   return (name || '')
     .split(' ')
@@ -97,7 +91,6 @@ export default function Home() {
   const hero = null;
   const about = null;
   const portfolioItems = PORTFOLIO_ITEMS.slice(0, 6);
-  const testimonials = FALLBACK_TESTIMONIALS.slice(0, 3);
   const stats = STATIC_STATS;
   return (
     <main>
@@ -285,42 +278,7 @@ export default function Home() {
 
  {/* Testimonials */}
       <section id="reviews" className="testimonials-modern">
-        <div className="testimonials-modern-container">
-          <div className="section-header" data-aos="fade-up">
-            <h2 className="section-title-modern">What Our Clients Say</h2>
-          </div>
-          <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
-              <div className="testimonial-card-modern" key={t.id || i} data-aos="fade-up" data-aos-delay={`${i * 100}`}>
-                <div className="testimonial-rating">
-                  <div className="rating-stars">
-                    {[1,2,3,4,5].map(s => (
-                      <i key={s} className={`fas fa-star${s <= (t.rating || 5) ? ' active' : ''}`}></i>
-                    ))}
-                  </div>
-                  <span className="rating-number">{t.rating || 5}.0</span>
-                  <span className="rating-text">Excellent</span>
-                </div>
-
-                <p className="testimonial-text">{t.testimonial}</p>
-
-                <div className="testimonial-author">
-                  <div className="author-avatar">
-                    {t.avatar_url ? (
-                      <img src={t.avatar_url} alt={t.client_name} />
-                    ) : (
-                      <div className="avatar-placeholder">{getInitials(t.client_name)}</div>
-                    )}
-                  </div>
-                  <div className="author-info">
-                    <h4>{t.client_name}</h4>
-                    <p>{t.company || 'Verified Customer'}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <Testimonials speed={60} />   
       </section>
 
     {/* Pricing */}
