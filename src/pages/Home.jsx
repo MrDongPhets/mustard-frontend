@@ -62,7 +62,7 @@ function getInitials(name) {
 
 export default function Home() {
   const navigate = useNavigate();
-  useEffect(() => { document.title = 'MUSTARD Digitals — Creative Design Studio'; }, []);
+  useEffect(() => { document.title = 'MUSTARD Digitals'; }, []);
 
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
