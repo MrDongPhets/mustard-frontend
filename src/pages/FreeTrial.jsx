@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { submitFreeTrial } from '../api/index.js';
+import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 import '../styles/free-trial.css';
 
 const INITIAL = {
@@ -82,16 +83,15 @@ export default function FreeTrial() {
     <main>
       {/* HERO */}
       <section className="ft-hero">
-        <div className="ft-hero-deco ft-hero-deco-1" />
-        <div className="ft-hero-deco ft-hero-deco-2" />
+        <HeroCanvas />
         <div className="ft-hero-inner" data-aos="fade-up">
           <div className="ft-eyebrow">
             <span className="ft-eyebrow-dot" /> Limited Availability
           </div>
           <h1>Claim Your <span>Free 2-Hour</span><br />Trial Task</h1>
           <p className="ft-hero-sub">
-            Let the work speak for itself. Submit a task, we deliver —{' '}
-            <b>no payment, no commitment, no risk.</b> This is how we earn your trust before you spend a single dollar.
+            Let the work speak for itself. Submit a task, we deliver.{' '}
+            <b>No payment, no commitment, no risk.</b> This is how we earn your trust before you spend a single dollar.
           </p>
           <div className="ft-badges">
             <span className="ft-badge"><i className="fas fa-clock"></i> 2 Hours Free</span>
@@ -110,10 +110,10 @@ export default function FreeTrial() {
         </div>
         <div className="ft-steps">
           {[
-            { n: '01', active: true,  title: 'Claim Your Free Trial',         desc: 'Tell us about one task you\'d like help with — anything reasonably completable within 2 hours. Fill out the form below.' },
+            { n: '01', active: true,  title: 'Claim Your Free Trial',         desc: 'Tell us about one task you\'d like help with, anything reasonably completable within 2 hours. Fill out the form below.' },
             { n: '02', active: true,  title: 'Book a Call & Submit Your Task', desc: 'Book a quick 15–20 min discovery call. We\'ll discuss your task, clarify requirements, and align on expectations.', note: 'Trial only begins after call is attended.' },
             { n: '03', active: false, title: 'We Deliver. You Review.',        desc: 'Your task is completed within 2 trial hours. Review the output and experience our quality firsthand.' },
-            { n: '04', active: false, title: 'Choose Your Package. Grow.',     desc: 'Happy with the results? Choose the hourly package that fits — 20, 40, or 80 hours. No pressure.' },
+            { n: '04', active: false, title: 'Choose Your Package. Grow.',     desc: 'Happy with the results? Choose the hourly package that fits, 20, 40, or 80 hours. No pressure.' },
           ].map(s => (
             <div className="ft-step" key={s.n}>
               <div className={`ft-step-num ${s.active ? 'active' : 'inactive'}`}>{s.n}</div>
@@ -127,6 +127,9 @@ export default function FreeTrial() {
 
       {/* FORM */}
       <section className="ft-form-section">
+        {[...Array(20)].map((_, i) => (
+          <span key={i} className={`ft-particle ft-particle-${i + 1}`} />
+        ))}
         <div className="ft-form-card" data-aos="fade-up">
           <div className="ft-form-h">Submit Your Trial Task</div>
           <p className="ft-form-sub">
@@ -180,7 +183,7 @@ export default function FreeTrial() {
               <div className="ft-form-group full">
                 <label className="ft-form-label">Task Description <span>*</span></label>
                 <textarea className="ft-form-textarea" name="taskDescription" required
-                  placeholder="Describe the task clearly — what's the output, what's the goal, any details we need to know. The more specific, the better."
+                  placeholder="Describe the task clearly, what's the output, what's the goal, any details we need to know. The more specific, the better."
                   value={form.taskDescription} onChange={handleChange} />
               </div>
               <div className="ft-form-group full">
@@ -192,7 +195,7 @@ export default function FreeTrial() {
               <div className="ft-form-group full">
                 <label className="ft-form-label">Reference Links</label>
                 <input className="ft-form-input" type="text" name="referenceLinks"
-                  placeholder="Google Drive, Dropbox, website links, inspiration examples — paste here"
+                  placeholder="Google Drive, Dropbox, website links, inspiration examples, paste here"
                   value={form.referenceLinks} onChange={handleChange} />
               </div>
               <div className="ft-form-group full">
@@ -209,7 +212,7 @@ export default function FreeTrial() {
               <div className="ft-cal-icon"><i className="fas fa-calendar-alt"></i></div>
               <div className="ft-cal-text">
                 <div className="ft-cal-title">Book Your Discovery Call <span>*</span></div>
-                <div className="ft-cal-sub">Required before your trial begins — 15 to 20 minutes. We'll align on your task and set expectations before we start.</div>
+                <div className="ft-cal-sub">Required before your trial begins, 15 to 20 minutes. We'll align on your task and set expectations before we start.</div>
               </div>
               <a className="ft-cal-btn" href="https://calendly.com/mustarddigitalsolutions/30min" target="_blank" rel="noreferrer">
                 Choose a Time →

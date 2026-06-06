@@ -93,6 +93,7 @@ export default function Navbar() {
 
           <NavLink to="/portfolio" className="nav-link" onClick={closeMenu}>Portfolio</NavLink>
           <NavLink to="/contact"   className="nav-link" onClick={closeMenu}>Contact</NavLink>
+          <NavLink to="/free-trial" className="nav-cta-btn" onClick={closeMenu}>Free Trial</NavLink>
         </nav>
 
         {/* Controls */}
