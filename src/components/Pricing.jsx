@@ -233,7 +233,7 @@ export default function Pricing() {
                 <td className="td-gold">
                   <div className="invest-stack invest-stack--left">
                     <p className="price-big gold">
-                      From $7/hr
+                      From $8/hr
                     </p>
 
                     <p className="invest-headline">
