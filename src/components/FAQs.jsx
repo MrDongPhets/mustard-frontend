@@ -91,11 +91,11 @@ const faqItems = [
           discount
         </li>
         <li>
-          40 Hours — 10% off (Most
+          40 Hours — 3% off (Most
           Popular)
         </li>
         <li>
-          80 Hours — 20% off (Best Value)
+          80 Hours — 5% off (Best Value)
         </li>
       </ul>
 
