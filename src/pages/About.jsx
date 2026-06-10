@@ -55,7 +55,7 @@ const TEAM = [
     img: 'src/assets/aboutpage_team/aikem.png' 
   },
    { 
-    category: 'Creative & Multimedia',
+    category: 'Creative & Multimedia',    
     name: 'Christine Joy Daquiado', 
     role: 'Creative Team', 
     desc: 'Christine is joining the Mustard Digitals creative team. We\'re excited to share more about her role and the work she\'ll be contributing to very soon.',
@@ -78,12 +78,10 @@ export default function About() {
   const [startX, setStartX] = useState(0);
   const [scrollLeftPos, setScrollLeftPos] = useState(0);
 
-  // The continuous scrolling function
   const startAutoScroll = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft += 0.8; // Adjust this number for speed (higher = faster)
+      carouselRef.current.scrollLeft += 0.8; 
       
-      // Infinite loop check: if scrolled halfway, reset to 0 seamlessly
       if (carouselRef.current.scrollLeft >= carouselRef.current.scrollWidth / 2) {
         carouselRef.current.scrollLeft = 0;
       }
@@ -95,16 +93,14 @@ export default function About() {
     cancelAnimationFrame(animationRef.current);
   };
 
-  // Start scrolling on mount
   useEffect(() => {
     animationRef.current = requestAnimationFrame(startAutoScroll);
     return () => cancelAnimationFrame(animationRef.current);
   }, []);
 
-  // Drag Event Handlers
   const handleMouseDown = (e) => {
     setIsDragging(true);
-    stopAutoScroll(); // Stop animation while dragging
+    stopAutoScroll(); 
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeftPos(carouselRef.current.scrollLeft);
   };
@@ -112,20 +108,20 @@ export default function About() {
   const handleMouseLeave = () => {
     if (isDragging) setIsDragging(false);
     stopAutoScroll();
-    startAutoScroll(); // Resume animation
+    startAutoScroll(); 
   };
   
   const handleMouseUp = () => {
     setIsDragging(false);
     stopAutoScroll();
-    startAutoScroll(); // Resume animation
+    startAutoScroll(); 
   };
   
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Drag speed multiplier
+    const walk = (x - startX) * 1.5; 
     carouselRef.current.scrollLeft = scrollLeftPos - walk;
   };
 
@@ -148,14 +144,14 @@ export default function About() {
       </section>
 
      {/* ── Our Story ────────────────────────────────────────── */}
-      <section className="about-modern growth-modern" id="story" style={{ padding: '100px 0', overflow: 'hidden' }}>
+      <section className="about-modern growth-modern" id="story" style={{ padding: 'clamp(60px, 10vw, 100px) 5%', overflow: 'hidden' }}>
         <div 
           className="about-container growth-container" 
-          style={{ display: 'flex', alignItems: 'center', gap: '64px', flexWrap: 'wrap' }}
+          style={{ display: 'flex', alignItems: 'center', gap: 'clamp(32px, 5vw, 64px)', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto' }}
         >
 
           {/* Left Side - Text Content */}
-          <div className="about-content growth-content" style={{ flex: '1 1 500px' }}>
+          <div className="about-content growth-content" style={{ flex: '1 1 min(100%, 500px)' }}>
             
             <div data-aos="fade-up">
               <p className="service-num-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
@@ -192,17 +188,17 @@ export default function About() {
               data-aos="fade-up" 
               data-aos-delay="100"
               style={{
-                padding: '16px 0 16px 32px',
+                padding: '16px 16px 16px 24px',
                 borderLeft: '4px solid var(--primary)',
                 margin: '0 0 32px 0',
                 background: 'linear-gradient(90deg, rgba(235, 185, 47, 0.05) 0%, transparent 100%)',
                 borderRadius: '0 16px 16px 0'
               }}
             >
-              <p className="about-description" style={{ fontSize: '1.25rem', fontStyle: 'italic', margin: 0, opacity: 0.9, lineHeight: '1.6' }}>
+              <p className="about-description" style={{ fontSize: '1.1rem', fontStyle: 'italic', margin: 0, opacity: 0.9, lineHeight: '1.6' }}>
                 "Though it is the smallest of all seeds, yet when it grows, it is the largest of garden plants."
                 <br/>
-                <span style={{ fontSize: '1rem', fontStyle: 'normal', opacity: 0.8, display: 'block', marginTop: '8px' }}>
+                <span style={{ fontSize: '0.9rem', fontStyle: 'normal', opacity: 0.8, display: 'block', marginTop: '8px' }}>
                   — Matthew 13:32, the parable that named us
                 </span>
               </p>
@@ -214,7 +210,7 @@ export default function About() {
           <div 
             className="growth-features-wrapper" 
             style={{ 
-              flex: '1 1 400px', 
+              flex: '1 1 min(100%, 400px)', 
               display: 'flex', 
               flexDirection: 'column',
               gap: '24px'
@@ -228,16 +224,15 @@ export default function About() {
                 background: 'var(--card)',
                 border: '1px solid var(--border)',
                 borderRadius: '24px',
-                padding: '32px',
+                padding: 'clamp(20px, 5vw, 32px)',
                 position: 'relative',
                 overflow: 'hidden',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
               }}
             >
-              {/* Subtle top border accent */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'var(--primary)' }}></div>
               
-              <p style={{ fontSize: '1.15rem', lineHeight: '1.7', margin: 0, opacity: 0.9 }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', margin: 0, opacity: 0.9 }}>
                 A lean, purposeful team that started with a conviction, that meaningful digital work and meaningful character development are not two separate pursuits, but one.
               </p>
               
@@ -251,7 +246,8 @@ export default function About() {
                 color: 'var(--primary)', 
                 borderRadius: '30px', 
                 fontSize: '0.9rem', 
-                fontWeight: '600' 
+                fontWeight: '600',
+                flexWrap: 'wrap'
               }}>
                 <i className="fas fa-book-open" style={{ fontSize: '0.8rem' }}></i> Matthew 13:31–32
               </div>
@@ -265,12 +261,12 @@ export default function About() {
                 background: 'var(--card)',
                 border: '1px solid var(--border)',
                 borderRadius: '24px',
-                padding: '32px',
+                padding: 'clamp(20px, 5vw, 32px)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
               }}
             >
               <h3 style={{ 
-                fontSize: '1.3rem', 
+                fontSize: '1.2rem', 
                 marginBottom: '24px', 
                 display: 'flex', 
                 alignItems: 'center', 
@@ -285,7 +281,8 @@ export default function About() {
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  color: 'var(--primary)'
+                  color: 'var(--primary)',
+                  flexShrink: 0
                 }}>
                   <i className="fas fa-star" style={{ fontSize: '0.9rem' }}></i>
                 </div>
@@ -301,16 +298,16 @@ export default function About() {
                 gap: '20px' 
               }}>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px' }}></i>
-                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1.05rem' }}>One coordinated team, no juggling multiple agencies or freelancers.</span>
+                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px', flexShrink: 0 }}></i>
+                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1rem' }}>One coordinated team, no juggling multiple agencies or freelancers.</span>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px' }}></i>
-                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1.05rem' }}>Multidisciplinary expertise: design, development, content, and operations.</span>
+                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px', flexShrink: 0 }}></i>
+                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1rem' }}>Multidisciplinary expertise: design, development, content, and operations.</span>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px' }}></i>
-                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1.05rem' }}>Character-led culture that shows up in every client interaction.</span>
+                  <i className="fas fa-check-circle" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginTop: '4px', flexShrink: 0 }}></i>
+                  <span style={{ opacity: 0.85, lineHeight: '1.5', fontSize: '1rem' }}>Character-led culture that shows up in every client interaction.</span>
                 </li>
               </ul>
             </div>
@@ -318,10 +315,10 @@ export default function About() {
 
         </div>
       </section>
+
       {/* ── Mission & Vision ─────────────────────────────────── */}
-      <section className="services-modern" style={{ padding: '120px 5%', position: 'relative' }}>
+      <section className="services-modern" style={{ padding: 'clamp(60px, 10vw, 120px) 5%', position: 'relative' }}>
         
-        {/* Injecting CSS for premium hover effects */}
         <style>
           {`
             .mission-vision-card {
@@ -344,8 +341,7 @@ export default function About() {
 
         <div className="services-modern-container" style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           
-          {/* Section Header */}
-          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: 'clamp(40px, 8vw, 80px)' }}>
             
               <p className="service-num-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                <i className="fas fa-compass" style={{ color: 'var(--primary)', fontSize: '0.9rem' }}></i>
@@ -359,13 +355,12 @@ export default function About() {
             </h2>
           </div>
 
-          {/* Cards Grid */}
           <div 
             className="mission-vision-grid" 
             style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-              gap: '40px' 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', 
+              gap: 'clamp(24px, 4vw, 40px)' 
             }}
           >
 
@@ -378,7 +373,7 @@ export default function About() {
                 background: 'var(--card)',
                 border: '1px solid var(--border)',
                 borderRadius: '32px',
-                padding: '48px',
+                padding: 'clamp(32px, 5vw, 48px)',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
@@ -386,7 +381,6 @@ export default function About() {
                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
               }}
             >
-              {/* Card Header: Icon + Title */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
                 <div 
                   className="mv-icon-wrapper"
@@ -400,36 +394,32 @@ export default function About() {
                     justifyContent: 'center',
                     color: 'var(--primary)',
                     fontSize: '1.5rem',
+                    flexShrink: 0,
                     boxShadow: 'inset 0 0 20px rgba(235, 185, 47, 0.05)'
                   }}
                 >
                   <i className="fas fa-bullseye"></i>
                 </div>
-                <h3 style={{ fontSize: '2rem', fontWeight: '700', margin: 0, color: 'var(--text)' }}>
+                <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', margin: 0, color: 'var(--text)' }}>
                   Our Mission
                 </h3>
               </div>
               
-              {/* Card Content */}
               <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                
-                {/* Highlighted Catchphrase */}
                 <div style={{ 
                   borderLeft: '4px solid var(--primary)', 
-                  paddingLeft: '24px',
+                  paddingLeft: '20px',
                   background: 'linear-gradient(90deg, rgba(235, 185, 47, 0.05) 0%, transparent 100%)',
                   paddingTop: '8px',
                   paddingBottom: '8px',
                   borderRadius: '0 12px 12px 0'
                 }}>
-                  <h4 style={{ fontSize: '1.4rem', fontWeight: '600', margin: 0, lineHeight: '1.5', color: 'var(--text)' }}>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: '600', margin: 0, lineHeight: '1.5', color: 'var(--text)' }}>
                     Do great work.<br/>
                     <span style={{ color: 'var(--primary)' }}>Build great people.</span>
                   </h4>
                 </div>
-
-                {/* Description */}
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.7', opacity: 0.85, margin: 0 }}>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.7', opacity: 0.85, margin: 0 }}>
                   To provide creative, reliable, and results-driven digital solutions, while building a team culture that develops integrity, servant leadership, and professional excellence from the inside out.
                 </p>
               </div>
@@ -444,7 +434,7 @@ export default function About() {
                 background: 'var(--card)',
                 border: '1px solid var(--border)',
                 borderRadius: '32px',
-                padding: '48px',
+                padding: 'clamp(32px, 5vw, 48px)',
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'relative',
@@ -452,7 +442,6 @@ export default function About() {
                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
               }}
             >
-              {/* Card Header: Icon + Title */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px' }}>
                 <div 
                   className="mv-icon-wrapper"
@@ -466,36 +455,32 @@ export default function About() {
                     justifyContent: 'center',
                     color: 'var(--primary)',
                     fontSize: '1.5rem',
+                    flexShrink: 0,
                     boxShadow: 'inset 0 0 20px rgba(235, 185, 47, 0.05)'
                   }}
                 >
                   <i className="fas fa-eye"></i>
                 </div>
-                <h3 style={{ fontSize: '2rem', fontWeight: '700', margin: 0, color: 'var(--text)' }}>
+                <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', margin: 0, color: 'var(--text)' }}>
                   Our Vision
                 </h3>
               </div>
               
-              {/* Card Content */}
               <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                
-                {/* Highlighted Catchphrase */}
                 <div style={{ 
                   borderLeft: '4px solid var(--primary)', 
-                  paddingLeft: '24px',
+                  paddingLeft: '20px',
                   background: 'linear-gradient(90deg, rgba(235, 185, 47, 0.05) 0%, transparent 100%)',
                   paddingTop: '8px',
                   paddingBottom: '8px',
                   borderRadius: '0 12px 12px 0'
                 }}>
-                  <h4 style={{ fontSize: '1.4rem', fontWeight: '600', margin: 0, lineHeight: '1.5', color: 'var(--text)' }}>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: '600', margin: 0, lineHeight: '1.5', color: 'var(--text)' }}>
                     A trusted partner.<br/>
                     <span style={{ color: 'var(--primary)' }}>A force for good.</span>
                   </h4>
                 </div>
-
-                {/* Description */}
-                <p style={{ fontSize: '1.125rem', lineHeight: '1.7', opacity: 0.85, margin: 0 }}>
+                <p style={{ fontSize: '1.05rem', lineHeight: '1.7', opacity: 0.85, margin: 0 }}>
                   To become a globally trusted digital partner known not only for quality work, but for raising leaders who go on to impact businesses, communities, and lives long after the project ends.
                 </p>
               </div>
@@ -506,9 +491,8 @@ export default function About() {
       </section>
 
   {/* ── Values ───────────────────────────────────────────── */}
-      <section className="about-modern values-modern" style={{ padding: '120px 5%', overflow: 'hidden', position: 'relative' }}>
+      <section className="about-modern values-modern" style={{ padding: 'clamp(60px, 10vw, 120px) 5%', overflow: 'hidden', position: 'relative' }}>
         
-        {/* Injecting CSS Keyframes and Hover Effects */}
         <style>
           {`
             @keyframes floatMassiveLetter {
@@ -517,7 +501,6 @@ export default function About() {
               100% { transform: translateY(0px) rotate(0deg); text-shadow: 0 10px 30px rgba(235, 185, 47, 0.2); }
             }
             
-            /* Premium Hover Effects for Value Cards */
             .value-card-hover {
               transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
             }
@@ -538,21 +521,19 @@ export default function About() {
 
         <div className="about-container" style={{ flexDirection: 'column', maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-          {/* Section Header */}
-          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '100px' }}>
+          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: 'clamp(60px, 10vw, 100px)' }}>
             <p className="service-num-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               <i className="fas fa-star" style={{ color: 'var(--primary)', fontSize: '0.9rem' }}></i>  Our Core Values
             </p>
-            <h2 className="section-title-modern" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', lineHeight: '1.2', fontWeight: '700', marginBottom: '1rem' }}>
+            <h2 className="section-title-modern" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.2', fontWeight: '700', marginBottom: '1rem' }}>
               What We <span style={{ color: 'var(--primary)' }}>Stand On.</span>
             </h2>
-            <p className="section-subtitle" style={{ opacity: 0.85, maxWidth: '650px', margin: '0 auto', fontSize: '1.15rem', lineHeight: '1.7' }}>
+            <p className="section-subtitle" style={{ opacity: 0.85, maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.7' }}>
               These aren't just words on a wall. They are the non-negotiable principles that guide every project, partnership, and decision we make.
             </p>
           </div>
 
-          {/* Values Row-by-Row List */}
-          <div className="values-list" style={{ display: 'flex', flexDirection: 'column', gap: '64px', width: '100%' }}>
+          <div className="values-list" style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(40px, 6vw, 64px)', width: '100%' }}>
             {[
               { letter: 'M', title: 'Meaningful Service', desc: 'We serve with purpose, excellence, and intentionality, seeing our work as both professional service and meaningful impact. Every deliverable is an act of service, not just a transaction.', icon: 'fa-hands-helping' },
               { letter: 'U', title: 'Unity in Team and Purpose', desc: "We cultivate collaboration, encouragement, and shared vision, building strong relationships within our team and with our clients. We don't just coordinate. We genuinely work together.", icon: 'fa-users' },
@@ -569,7 +550,7 @@ export default function About() {
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignItems: 'center',
-                    gap: '40px',
+                    gap: 'clamp(24px, 4vw, 40px)',
                     width: '100%'
                   }}
                 >
@@ -580,7 +561,7 @@ export default function About() {
                     data-aos-delay="100"
                     style={{
                       flex: '0 0 auto',
-                      width: 'clamp(120px, 15vw, 180px)', // Keeps the left column width consistent so cards align perfectly
+                      width: 'clamp(80px, 15vw, 180px)', 
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -588,12 +569,12 @@ export default function About() {
                     }}
                   >
                     <span style={{
-                      fontSize: 'clamp(8rem, 12vw, 12rem)', // Made significantly bigger
+                      fontSize: 'clamp(6rem, 12vw, 12rem)', 
                       fontWeight: '900',
                       color: 'var(--primary)',
                       lineHeight: '1',
                       animation: 'floatMassiveLetter 6s ease-in-out infinite',
-                      animationDelay: `${i * 0.4}s`, // Staggers the animation down the list
+                      animationDelay: `${i * 0.4}s`,
                       display: 'inline-block'
                     }}>
                       {v.letter}
@@ -606,8 +587,8 @@ export default function About() {
                     data-aos="fade-left"
                     data-aos-delay="200"
                     style={{
-                      flex: '1 1 400px', // Takes up the remaining space
-                      padding: '48px',
+                      flex: '1 1 min(100%, 300px)', 
+                      padding: 'clamp(24px, 5vw, 48px)',
                       background: 'var(--card)',
                       border: '1px solid var(--border)',
                       borderRadius: '32px',
@@ -618,7 +599,6 @@ export default function About() {
                       justifyContent: 'center'
                     }}
                   >
-                    {/* Small context icon */}
                     <div 
                       className="value-icon-wrapper"
                       style={{ 
@@ -636,11 +616,11 @@ export default function About() {
                       <i className={`fas ${v.icon}`} style={{ fontSize: '1.2rem' }}></i>
                     </div>
 
-                    <h3 className="service-title" style={{ fontSize: '2rem', marginBottom: '16px', color: 'var(--text)', fontWeight: '700' }}>
+                    <h3 className="service-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', marginBottom: '16px', color: 'var(--text)', fontWeight: '700' }}>
                       {v.title}
                     </h3>
                     
-                    <p className="service-description" style={{ fontSize: '1.15rem', margin: 0, opacity: 0.85, lineHeight: '1.7', color: 'var(--text)' }}>
+                    <p className="service-description" style={{ fontSize: '1.05rem', margin: 0, opacity: 0.85, lineHeight: '1.7', color: 'var(--text)' }}>
                       {v.desc}
                     </p>
                   </div>
@@ -653,11 +633,9 @@ export default function About() {
         </div>
       </section>
 
-
     {/* ── Team ─────────────────────────────────────────────── */}
-      <section className="testimonials-modern team-section" style={{ padding: '120px 5%', overflow: 'hidden' }}>
+      <section className="testimonials-modern team-section" style={{ padding: 'clamp(60px, 10vw, 120px) 5%', overflow: 'hidden' }}>
         
-        {/* CSS for the premium slide-up card animation and grid layouts */}
         <style>
           {`
             .team-category-title {
@@ -674,13 +652,12 @@ export default function About() {
             }
             .team-grid {
               display: grid;
-              /* Reduced min-width from 320px to 260px to make the cards significantly sleeker */
-              grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+              /* Updated minmax logic for perfect mobile scaling */
+              grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
               gap: 32px;
               margin-bottom: 80px;
             }
             
-            /* Card Container */
             .team-member-card {
               position: relative;
               border-radius: 20px;
@@ -692,7 +669,6 @@ export default function About() {
               cursor: pointer;
             }
             
-            /* Profile Image */
             .team-member-img {
               width: 100%;
               height: 100%;
@@ -705,13 +681,11 @@ export default function About() {
               filter: brightness(0.3) saturate(1.2);
             }
             
-            /* Content Overlay wrapper */
             .team-info-wrapper {
               position: absolute;
               bottom: 0;
               left: 0;
               right: 0;
-              /* Reduced padding to perfectly frame the new smaller card size */
               padding: 50px 24px 24px;
               background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 60%, transparent 100%);
               display: flex;
@@ -720,7 +694,6 @@ export default function About() {
               transform: translateY(0);
             }
             
-            /* Description Expand Animation using modern CSS Grid */
             .team-member-desc-wrapper {
               display: grid;
               grid-template-rows: 0fr;
@@ -733,9 +706,8 @@ export default function About() {
               transition: opacity 0.4s ease, transform 0.5s ease;
             }
             
-            /* Hover Trigger */
             .team-member-card:hover .team-member-desc-wrapper {
-              grid-template-rows: 1fr; /* Smoothly expands to fit content */
+              grid-template-rows: 1fr;
             }
             .team-member-card:hover .team-member-desc-inner {
               opacity: 1;
@@ -747,25 +719,23 @@ export default function About() {
 
         <div className="about-container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           
-          {/* Section Header */}
-          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div data-aos="fade-up" style={{ textAlign: 'center', marginBottom: 'clamp(40px, 8vw, 80px)' }}>
             <p className="service-num-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
               <i className="fas fa-users" style={{ color: 'var(--primary)', fontSize: '0.9rem' }}></i>
                The People Behind the Work
             </p>
             
-            <h2 className="section-title-modern" style={{ fontSize: 'clamp(2.5rem, 5vw, 3rem)', lineHeight: '1.2', fontWeight: '700', marginBottom: '1rem' }}>
+            <h2 className="section-title-modern" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.2', fontWeight: '700', marginBottom: '1rem' }}>
               A Team You'll Actually
               <br />
               <span style={{ color: 'var(--primary)' }}>Want To Work With.</span>
             </h2>
-            <p className="section-subtitle" style={{ opacity: 0.85, maxWidth: '750px', margin: '0 auto', fontSize: '1.15rem', lineHeight: '1.7' }}>
+            <p className="section-subtitle" style={{ opacity: 0.85, maxWidth: '750px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.7' }}>
               We're a multidisciplinary team combining creative design, technical development, multimedia production, and business operations, all working as one. No silos. No handoff delays. Just people who genuinely care about your project, collaborating to get it right.
             </p>
           </div>
 
-          {/* Team Grid - All Members */}
-          <div className="team-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', justifyContent: 'center' }}>
+          <div className="team-grid">
             {TEAM.map((member, i) => (
               <div 
                 className="team-member-card" 
@@ -773,7 +743,6 @@ export default function About() {
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
               >
-                {/* Background Image */}
                 <img
                   src={member.img}
                   alt={member.name}
@@ -781,13 +750,10 @@ export default function About() {
                   className="team-member-img"
                 />
                 
-                {/* Sliding Information Overlay */}
                 <div className="team-info-wrapper">
-                  
-                  {/* Always Visible: Name and Role */}
                   <div>
                     <h4 style={{ 
-                      fontSize: '1.4rem', /* Scaled down for the smaller card */
+                      fontSize: '1.25rem',
                       marginBottom: '4px', 
                       fontWeight: '700', 
                       color: '#ffffff',
@@ -797,7 +763,7 @@ export default function About() {
                     </h4>
                     <p style={{ 
                       color: 'var(--primary)', 
-                      fontSize: '0.8rem', /* Scaled down */
+                      fontSize: '0.75rem',
                       letterSpacing: '1px', 
                       textTransform: 'uppercase', 
                       margin: 0,
@@ -807,11 +773,10 @@ export default function About() {
                     </p>
                   </div>
 
-                  {/* Hidden by default, slides up on hover: Description */}
                   <div className="team-member-desc-wrapper">
                     <div className="team-member-desc-inner">
                       <p style={{ 
-                        fontSize: '0.95rem', /* Scaled down */
+                        fontSize: '0.9rem',
                         lineHeight: '1.5', 
                         color: 'rgba(255,255,255,0.85)', 
                         margin: 0,
@@ -843,7 +808,7 @@ export default function About() {
       <section 
         className="cta-modern" 
         style={{ 
-          padding: '120px 5%', 
+          padding: 'clamp(60px, 10vw, 120px) 5%', 
           display: 'flex',
           justifyContent: 'center'
         }}
@@ -855,18 +820,18 @@ export default function About() {
             maxWidth: '800px', 
             width: '100%',
             background: 'var(--card)', 
-            padding: '64px 40px', 
+            padding: 'clamp(32px, 6vw, 64px) clamp(20px, 5vw, 40px)', 
             borderRadius: '24px', 
             border: '1px solid var(--border)',
             textAlign: 'center'
           }}
         >
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 'bold' }}>
-            Readys to Work With a Team <br></br><span style={{ color: 'var(--primary)' }}>That Cares?</span>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '20px', fontWeight: 'bold' }}>
+            Ready to Work With a Team <br></br><span style={{ color: 'var(--primary)' }}>That Cares?</span>
           </h2>
           
           <p style={{ 
-            fontSize: '1.125rem', 
+            fontSize: '1.05rem', 
             opacity: 0.8, 
             maxWidth: '600px', 
             margin: '0 auto 40px auto', 
@@ -885,11 +850,13 @@ export default function About() {
               className="btn btn-primary-modern"
               onClick={() => navigate('/free-trial')}
               style={{ 
-                fontSize: '1.05rem', 
+                fontSize: '1rem', 
                 padding: '16px 32px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '10px'
+                justifyContent: 'center',
+                gap: '10px',
+                flex: '1 1 min(100%, 250px)'
               }}
             >
               Claim Free Trial <i className="fas fa-arrow-right"></i>
@@ -899,10 +866,11 @@ export default function About() {
               className="btn btn-secondary-modern"
               onClick={() => navigate('/contact')}
               style={{
-                fontSize: '1.05rem',
+                fontSize: '1rem',
                 padding: '16px 32px',
                 display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '10px',
                 background: 'transparent',
                 color: 'var(--text)',
@@ -910,7 +878,8 @@ export default function About() {
                 borderRadius: '8px',
                 textDecoration: 'none',
                 transition: 'all 0.3s ease',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                flex: '1 1 min(100%, 250px)'
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.background = 'rgba(128, 128, 128, 0.1)')
