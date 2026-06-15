@@ -9,7 +9,8 @@ import cathImage from '../assets/aboutpage_team/cath.png';
 import christianImage from '../assets/aboutpage_team/christian.png' 
 import williamImage from '../assets/aboutpage_team/william.png' 
 import jmImage from '../assets/aboutpage_team/jm.png'
-import aikemImage from '../assets/aboutpage_team/aikem.png' 
+import aikemImage from '../assets/aboutpage_team/aikem.png'
+import christineImage from '../assets/aboutpage_team/joy.png'
 
 const MUSTARD_VALUES = [
   { icon: 'fa-shield-alt',   title: 'Integrity',  desc: 'We do what we say. Always.' },
@@ -67,7 +68,7 @@ const TEAM = [
     name: 'Christine Joy Daquiado', 
     role: 'Creative Team', 
     desc: 'Christine is joining the Mustard Digitals creative team. We\'re excited to share more about her role and the work she\'ll be contributing to very soon.',
-    img: 'src/assets/aboutpage_team/joy.png' 
+    img: christineImage
   }
 ];
 
