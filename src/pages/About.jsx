@@ -66,8 +66,8 @@ const TEAM = [
    { 
     category: 'Creative & Multimedia',    
     name: 'Christine Joy Daquiado', 
-    role: 'Creative Team', 
-    desc: 'Christine is joining the Mustard Digitals creative team. We\'re excited to share more about her role and the work she\'ll be contributing to very soon.',
+    role: 'Administrative Assistant · Client Support Specialist', 
+    desc: 'Joy supports administrative operations, document management, client coordination, and day-to-day business tasks. She helps maintain organized workflows, manage information efficiently, and provide reliable assistance for smooth project execution.',
     img: christineImage
   }
 ];
