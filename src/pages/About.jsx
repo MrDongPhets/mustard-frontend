@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/style-modern.css';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 
+//TEAM ASSETS
+import arvieImage from '../assets/aboutpage_team/arvie.png'; 
+import cathImage from '../assets/aboutpage_team/cath.png';  
+import christianImage from '../assets/aboutpage_team/christian.png' 
+import williamImage from '../assets/aboutpage_team/william.png' 
+import jmImage from '../assets/aboutpage_team/jm.png'
+import aikemImage from '../assets/aboutpage_team/aikem.png' 
+
 const MUSTARD_VALUES = [
   { icon: 'fa-shield-alt',   title: 'Integrity',  desc: 'We do what we say. Always.' },
   { icon: 'fa-gem',          title: 'Excellence', desc: "Good enough isn't our standard." },
@@ -17,42 +25,42 @@ const TEAM = [
     name: 'Arvie Buenaflor', 
     role: 'Founder · Creative Director', 
     desc: 'Arvie leads Mustard Digitals\' creative direction with a background in Architecture, bringing structural thinking to brand identity, web design, and digital storytelling.',
-    img: 'src/assets/aboutpage_team/arvie.png' 
+    img: arvieImage
   },
    { 
     category: 'Leadership',
     name: 'Cath Ayacaide', 
     role: 'Founding Partner · Operations Lead', 
     desc: 'With a background in Business Administration and Finance, Cath ensures everything runs smoothly, from client coordination and project workflows to administrative operations. She\'s the reason things get done on time and every client feels genuinely looked after.',
-    img: 'src/assets/aboutpage_team/cath.png' 
+    img: cathImage
   },
   { 
     category: 'Development & Technical',
     name: 'Christian Mendoza', 
     role: 'Full-Stack Developer · UI/UX Designer', 
     desc: 'Christian bridges the gap between great design and solid engineering, building responsive, user-centered systems across both frontend and backend, with a sharp eye for usability and detail.',
-     img: 'src/assets/aboutpage_team/christian.png' 
+    img: christianImage  
   },
     { 
     category: 'Development & Technical',
     name: 'William Marpa', 
     role: 'Web Developer · Website Designer', 
     desc: 'William builds functional, well-crafted websites on WordPress and Wix, aligned with business goals and designed to deliver a real, lasting user experience.',
-     img: 'src/assets/aboutpage_team/william.png' 
+     img: williamImage  
   },
   { 
     category: 'Creative & Multimedia',
     name: 'JM Econar', 
     role: 'Graphic Designer · Video Editor · Web Designer', 
     desc: 'JM brings versatility to every creative brief: from graphic design and video editing to web development and AI-driven digital initiatives. A reliable creative hand across disciplines.',
-    img: 'src/assets/aboutpage_team/jm.png' 
+    img: jmImage 
   },
   { 
     category: 'Creative & Multimedia',
     name: 'Aikem Buenaflor', 
     role: 'Graphic Designer · UI Designer · Front-End Developer', 
     desc: 'Aikem sits at the intersection of creative and technical, designing compelling visuals and bringing them to life through clean, purposeful front-end implementation.',
-    img: 'src/assets/aboutpage_team/aikem.png' 
+    img: aikemImage
   },
    { 
     category: 'Creative & Multimedia',    
