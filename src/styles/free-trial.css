@@ -4,11 +4,28 @@
   background: var(--dark);
   border-radius: 0 0 40px 40px;
   padding: 120px min(2rem, 8%) 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-.ft-hero-inner { position: relative; z-index: 1; }
+
+.ft-hero .hero-canvas-bg {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  width: 100% !important;
+}
+
+.ft-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  width: 100%;
+}
 
 .ft-eyebrow {
   display: inline-flex;

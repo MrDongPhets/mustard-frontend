@@ -814,91 +814,20 @@ export default function About() {
           }
         `}
       </style>
-      <section 
-        className="cta-modern" 
-        style={{ 
-          padding: 'clamp(60px, 10vw, 120px) 5%', 
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-      >
-        <div 
-          className="cta-container" 
-          data-aos="fade-up" 
-          style={{ 
-            maxWidth: '800px', 
-            width: '100%',
-            background: 'var(--card)', 
-            padding: 'clamp(32px, 6vw, 64px) clamp(20px, 5vw, 40px)', 
-            borderRadius: '24px', 
-            border: '1px solid var(--border)',
-            textAlign: 'center'
-          }}
-        >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '20px', fontWeight: 'bold' }}>
-            Ready to Work With a Team <br></br><span style={{ color: 'var(--primary)' }}>That Cares?</span>
-          </h2>
-          
-          <p style={{ 
-            fontSize: '1.05rem', 
-            opacity: 0.8, 
-            maxWidth: '600px', 
-            margin: '0 auto 40px auto', 
-            lineHeight: '1.6' 
-          }}>
-            Whether you need a fresh brand, a new website, or an extra set of hands to run your operations, we're ready to help.
-          </p>
-
-          <div style={{ 
-            display: 'flex', 
-            gap: '16px', 
-            justifyContent: 'center', 
-            flexWrap: 'wrap' 
-          }}>
-            <button
-              className="btn btn-primary-modern"
-              onClick={() => navigate('/free-trial')}
-              style={{ 
-                fontSize: '1rem', 
-                padding: '16px 32px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px',
-                flex: '1 1 min(100%, 250px)'
-              }}
-            >
+      <section className="cta-modern" data-aos="fade-up">
+        <div className="cta-content">
+          <div className="cta-icon">
+            <i className="fas fa-handshake"></i>
+          </div>
+          <h2>Ready to Work With a Team <span style={{ color: 'var(--primary)' }}>That Cares?</span></h2>
+          <p>Whether you need a fresh brand, a new website, or an extra set of hands to run your operations, we&apos;re ready to help.</p>
+          <div className="svc-cta-btns">
+            <button className="btn btn-primary-modern btn-lg" onClick={() => navigate('/free-trial')}>
               Claim Free Trial <i className="fas fa-arrow-right"></i>
             </button>
-            
-           <button
-              className="btn btn-secondary-modern"
-              onClick={() => navigate('/contact')}
-              style={{
-                fontSize: '1rem',
-                padding: '16px 32px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px',
-                background: 'transparent',
-                color: 'var(--text)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-                flex: '1 1 min(100%, 250px)'
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = 'rgba(128, 128, 128, 0.1)')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = 'transparent')
-              }
-            >
-              <i className="fas fa-calendar-alt"></i>
-              Book A Discovery Call
+            <button className="btn btn-outline btn-lg" onClick={() => navigate('/contact')}
+              style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}>
+              <i className="fas fa-calendar-alt"></i> Book A Discovery Call
             </button>
           </div>
         </div>

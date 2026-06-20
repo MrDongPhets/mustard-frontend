@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { submitContact } from '../api/index.js';
 import '../styles/contact.css';
 
 export default function Contact() {
+  const navigate = useNavigate();
   useEffect(() => { document.title = 'Contact | MUSTARD Digitals'; }, []);
   const [form, setForm] = useState({
     name: '', email: '', phone: '', service: '', message: '', newsletter: false,
@@ -257,16 +259,22 @@ export default function Contact() {
       </section>
 
       {/* CTA Section */}
-      <section className="contact-cta-section" data-aos="fade-up">
+      <section className="cta-modern" data-aos="fade-up">
         <div className="cta-content">
-          <div className="cta-icon-large">
+          <div className="cta-icon">
             <i className="fas fa-rocket"></i>
           </div>
-          <h2>Ready to Start Your Project?</h2>
-          <p>Book a free 30-minute consultation to discuss your project and get expert advice</p>
-          <a href="#" className="btn btn-white-outline btn-lg">
-            <i className="far fa-calendar-alt"></i> Schedule a Call
-          </a>
+          <h2>Not sure where to start?</h2>
+          <p>Try us out risk-free with a free 2-hour task — no commitment needed.</p>
+          <div className="svc-cta-btns">
+            <button className="btn btn-primary-modern btn-lg" onClick={() => navigate('/free-trial')}>
+              Claim Free Trial <i className="fas fa-arrow-right"></i>
+            </button>
+            <button className="btn btn-outline btn-lg" onClick={() => navigate('/services')}
+              style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}>
+              <i className="fas fa-th"></i> View Our Services
+            </button>
+          </div>
         </div>
       </section>
     </main>
