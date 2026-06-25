@@ -23,49 +23,49 @@ const MUSTARD_VALUES = [
 const TEAM = [
   { 
     category: 'Leadership',
-    name: 'Arvie Buenaflor', 
+    name: 'Arvie', 
     role: 'Founder · Creative Director', 
     desc: 'Arvie leads Mustard Digitals\' creative direction with a background in Architecture, bringing structural thinking to brand identity, web design, and digital storytelling.',
     img: arvieImage
   },
    { 
     category: 'Leadership',
-    name: 'Cath Ayacaide', 
+    name: 'Cath', 
     role: 'Founding Partner · Operations Lead', 
     desc: 'With a background in Business Administration and Finance, Cath ensures everything runs smoothly, from client coordination and project workflows to administrative operations. She\'s the reason things get done on time and every client feels genuinely looked after.',
     img: cathImage
   },
   { 
     category: 'Development & Technical',
-    name: 'Christian Mendoza', 
+    name: 'Christian', 
     role: 'Full-Stack Developer · UI/UX Designer', 
     desc: 'Christian bridges the gap between great design and solid engineering, building responsive, user-centered systems across both frontend and backend, with a sharp eye for usability and detail.',
     img: christianImage  
   },
     { 
     category: 'Development & Technical',
-    name: 'William Marpa', 
+    name: 'William', 
     role: 'Web Developer · Website Designer', 
     desc: 'William builds functional, well-crafted websites on WordPress and Wix, aligned with business goals and designed to deliver a real, lasting user experience.',
      img: williamImage  
   },
   { 
     category: 'Creative & Multimedia',
-    name: 'JM Econar', 
+    name: 'JM', 
     role: 'Graphic Designer · Video Editor · Web Designer', 
     desc: 'JM brings versatility to every creative brief: from graphic design and video editing to web development and AI-driven digital initiatives. A reliable creative hand across disciplines.',
     img: jmImage 
   },
   { 
     category: 'Creative & Multimedia',
-    name: 'Aikem Buenaflor', 
+    name: 'Aikem', 
     role: 'Graphic Designer · UI Designer · Front-End Developer', 
     desc: 'Aikem sits at the intersection of creative and technical, designing compelling visuals and bringing them to life through clean, purposeful front-end implementation.',
     img: aikemImage
   },
    { 
     category: 'Creative & Multimedia',    
-    name: 'Christine Joy Daquiado', 
+    name: 'Joy', 
     role: 'Administrative Assistant · Client Support Specialist', 
     desc: 'Joy supports administrative operations, document management, client coordination, and day-to-day business tasks. She helps maintain organized workflows, manage information efficiently, and provide reliable assistance for smooth project execution.',
     img: christineImage
@@ -762,7 +762,7 @@ export default function About() {
                 <div className="team-info-wrapper">
                   <div>
                     <h4 style={{ 
-                      fontSize: '1.25rem',
+                      fontSize: '1.45rem',
                       marginBottom: '4px', 
                       fontWeight: '700', 
                       color: '#ffffff',
