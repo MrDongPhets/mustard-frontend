@@ -41,8 +41,8 @@ export default function Navbar() {
           <NavLink to="/"          className="nav-link" end onClick={closeMenu}>Home</NavLink>
           <NavLink to="/about"     className="nav-link" onClick={closeMenu}>About</NavLink>
           <NavLink to="/services"  className="nav-link" onClick={closeMenu}>Services</NavLink>
-         {/* <NavLink to="/portfolio" className="nav-link" onClick={closeMenu}>Portfolio</NavLink>
-          <NavLink to="/contact"   className="nav-link" onClick={closeMenu}>Contact</NavLink> */}
+          <NavLink to="/portfolio" className="nav-link" onClick={closeMenu}>Portfolio</NavLink>
+         {/* <NavLink to="/contact"   className="nav-link" onClick={closeMenu}>Contact</NavLink> */}
           <NavLink to="/free-trial" className="nav-cta-btn" onClick={closeMenu}>Free Trial</NavLink>
         </nav>
 
