@@ -8,24 +8,24 @@ const NEXT_STEPS = [
   {
     num: 1,
     title: 'We review your message',
-    desc: 'Someone from our team reads every inquiry personally — no bots, no auto-replies pretending to be human.',
+    desc: 'Someone from our team reads every inquiry personally, no bots, no auto-replies pretending to be human.',
   },
   {
     num: 2,
     title: 'We follow up within 1–2 business days',
-    desc: "You'll hear back with next steps — usually an invite to book a free discovery call at a time that works for you.",
+    desc: "You'll hear back with next steps, usually an invite to book a free discovery call at a time that works for you.",
   },
   {
     num: 3,
     title: 'We talk through your project',
-    desc: "On the call, we'll discuss your goals and how our team can help — whether that starts with a trial task or a full scope.",
+    desc: "On the call, we'll discuss your goals and how our team can help, whether that starts with a trial task or a full scope.",
   },
 ];
 
 const FAQS = [
   {
     q: 'Do I need to know exactly what service I need before contacting you?',
-    a: "Not at all. Many clients reach out with a general goal rather than a specific service in mind — we'll help you figure out the right fit during the discovery call.",
+    a: "Not at all. Many clients reach out with a general goal rather than a specific service in mind, we'll help you figure out the right fit during the discovery call.",
   },
   {
     q: 'Is the discovery call really free?',
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: 'Do you work with businesses outside the Philippines?',
-    a: "Yes — most of our clients are based in the US and other countries. We're set up for async, cross-timezone communication as a standard part of how we work.",
+    a: "Yes, most of our clients are based in the US and other countries. We're set up for async, cross-timezone communication as a standard part of how we work.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function Contact() {
     <main>
       <SEO
         title="Contact"
-        description="Get in touch with MUSTARD Digitals. Tell us about your project and we'll follow up to schedule a free discovery call — or claim a free 2-hour trial task."
+        description="Get in touch with MUSTARD Digitals. Tell us about your project and we'll follow up to schedule a free discovery call, or claim a free 2-hour trial task."
         path="/contact"
       />
       {/* Hero */}
@@ -200,7 +200,7 @@ export default function Contact() {
 
             <div className="trial-box">
               <span className="trial-tag">🌱 Plant Phase</span>
-              <p>Not sure where to start? Ask about our free 2-hour trial task — a low-risk way to experience how our team works before committing to a full project.</p>
+              <p>Not sure where to start? Ask about our free 2-hour trial task, a low-risk way to experience how our team works before committing to a full project.</p>
             </div>
           </div>
         </div>

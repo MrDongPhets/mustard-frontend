@@ -319,6 +319,13 @@
   border-radius: 16px;
   padding: 30px 26px;
   border: 1px solid var(--border);
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+
+.next-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px rgba(235, 185, 47, 0.3), 0 12px 32px rgba(235, 185, 47, 0.25);
 }
 
 .next-num {
