@@ -1,21 +1,52 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { submitContact } from '../api/index.js';
+import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 import '../styles/contact.css';
 
+const NEXT_STEPS = [
+  {
+    num: 1,
+    title: 'We review your message',
+    desc: 'Someone from our team reads every inquiry personally — no bots, no auto-replies pretending to be human.',
+  },
+  {
+    num: 2,
+    title: 'We follow up within 1–2 business days',
+    desc: "You'll hear back with next steps — usually an invite to book a free discovery call at a time that works for you.",
+  },
+  {
+    num: 3,
+    title: 'We talk through your project',
+    desc: "On the call, we'll discuss your goals and how our team can help — whether that starts with a trial task or a full scope.",
+  },
+];
+
+const FAQS = [
+  {
+    q: 'Do I need to know exactly what service I need before contacting you?',
+    a: "Not at all. Many clients reach out with a general goal rather than a specific service in mind — we'll help you figure out the right fit during the discovery call.",
+  },
+  {
+    q: 'Is the discovery call really free?',
+    a: "Yes. There's no cost or obligation to book a call. You can also start with a free 2-hour trial task if you'd like a hands-on preview before committing.",
+  },
+  {
+    q: 'Do you work with businesses outside the Philippines?',
+    a: "Yes — most of our clients are based in the US and other countries. We're set up for async, cross-timezone communication as a standard part of how we work.",
+  },
+];
+
 export default function Contact() {
-  const navigate = useNavigate();
   useEffect(() => { document.title = 'Contact | MUSTARD Digitals'; }, []);
-  const [form, setForm] = useState({
-    name: '', email: '', phone: '', service: '', message: '', newsletter: false,
-  });
+
+  const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' });
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
   function handleChange(e) {
-    const { name, value, type, checked } = e.target;
-    setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
   }
 
   async function handleSubmit(e) {
@@ -23,16 +54,9 @@ export default function Contact() {
     setSending(true);
     setError('');
     try {
-      await submitContact({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        service: form.service,
-        message: form.message,
-        newsletter: form.newsletter ? 'yes' : '',
-      });
+      await submitContact(form);
       setSuccess(true);
-      setForm({ name: '', email: '', phone: '', service: '', message: '', newsletter: false });
+      setForm({ name: '', email: '', company: '', service: '', message: '' });
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {
@@ -42,238 +66,169 @@ export default function Contact() {
 
   return (
     <main>
-      {/* Contact Hero */}
-      <section className="contact-hero">
+      {/* Hero */}
+      <section className="contact-hero-modern">
+        <HeroCanvas />
         <div className="contact-hero-content" data-aos="fade-up">
-          <div className="hero-badge">
-            <i className="fas fa-envelope"></i> Let&apos;s Talk
-          </div>
-          <h1>Get in Touch</h1>
-          <p>Have a project in mind? Let&apos;s create something amazing together. We&apos;re here to bring your vision to life.</p>
-        </div>
-
-        <div className="social-links-contact" data-aos="fade-up" data-aos-delay="200">
-          <a href="#"><i className="fab fa-facebook"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-linkedin"></i></a>
-          <a href="#"><i className="fab fa-dribbble"></i></a>
+          <div className="contact-pill">Get In Touch</div>
+          <h1>Let&apos;s Talk About <em>What You&apos;re Building.</em></h1>
+          <p>Whether you&apos;re ready to start a project or just want to ask a few questions, our team is here to help. Tell us a bit about your business, and we&apos;ll get back to you soon.</p>
         </div>
       </section>
 
-      {/* Contact Main Section */}
-      <section className="contact-main-section">
-        <div className="contact-container">
-          {/* Contact Form */}
-          <div className="contact-form-wrapper" data-aos="fade-right">
-            <div className="form-header">
-              <h2>Send us a Message</h2>
-              <p>Fill out the form below and we&apos;ll get back to you within 24 hours</p>
-            </div>
+      {/* Form + Info */}
+      <div className="contact-main-modern">
+        <div className="contact-grid-modern" data-aos="fade-up">
+          <div className="form-side">
+            <h3>Send us a message</h3>
+            <p className="form-side-sub">Fill out the form and we&apos;ll follow up to schedule a free discovery call.</p>
 
             {success && (
-              <div style={{
-                background: '#d4edda', color: '#155724', border: '1px solid #c3e6cb',
-                borderRadius: '8px', padding: '16px', marginBottom: '24px',
-              }}>
-                <i className="fas fa-check-circle" style={{ marginRight: '8px' }}></i>
-                <strong>Message Sent!</strong> Thank you for reaching out. We&apos;ll get back to you within 24 hours.
+              <div className="form-alert form-alert-success">
+                <i className="fas fa-check-circle"></i>
+                <span><strong>Message sent!</strong> We&apos;ll follow up within 1–2 business days.</span>
               </div>
             )}
-
             {error && (
-              <div style={{
-                background: '#f8d7da', color: '#721c24', border: '1px solid #f5c6cb',
-                borderRadius: '8px', padding: '16px', marginBottom: '24px',
-              }}>
-                <i className="fas fa-exclamation-circle" style={{ marginRight: '8px' }}></i>
-                {error}
+              <div className="form-alert form-alert-error">
+                <i className="fas fa-exclamation-circle"></i>
+                <span>{error}</span>
               </div>
             )}
 
-            <form className="modern-contact-form" onSubmit={handleSubmit}>
-              <div className="form-row-modern">
-                <div className="form-group-modern">
-                  <label htmlFor="name">
-                    <i className="fas fa-user"></i> Full Name *
-                  </label>
+            <form onSubmit={handleSubmit}>
+              <div className="frow">
+                <div className="field">
+                  <label htmlFor="name">Full Name</label>
                   <input
                     type="text" id="name" name="name" required
-                    placeholder="John Doe"
+                    placeholder="Jane Doe"
                     value={form.name} onChange={handleChange}
                   />
                 </div>
-                <div className="form-group-modern">
-                  <label htmlFor="email">
-                    <i className="fas fa-envelope"></i> Email Address *
-                  </label>
+                <div className="field">
+                  <label htmlFor="email">Email Address</label>
                   <input
                     type="email" id="email" name="email" required
-                    placeholder="john@example.com"
+                    placeholder="jane@company.com"
                     value={form.email} onChange={handleChange}
                   />
                 </div>
               </div>
-
-              <div className="form-row-modern">
-                <div className="form-group-modern">
-                  <label htmlFor="phone">
-                    <i className="fas fa-phone"></i> Phone Number
-                  </label>
+              <div className="frow">
+                <div className="field">
+                  <label htmlFor="company">Company / Business Name</label>
                   <input
-                    type="tel" id="phone" name="phone"
-                    placeholder="+1 (234) 567-8900"
-                    value={form.phone} onChange={handleChange}
+                    type="text" id="company" name="company"
+                    placeholder="Your business"
+                    value={form.company} onChange={handleChange}
                   />
                 </div>
-                <div className="form-group-modern">
-                  <label htmlFor="service">
-                    <i className="fas fa-briefcase"></i> Service Interested In
-                  </label>
+                <div className="field">
+                  <label htmlFor="service">What do you need help with?</label>
                   <select id="service" name="service" value={form.service} onChange={handleChange}>
                     <option value="">Select a service</option>
-                    <option value="Website Design">Website Design</option>
-                    <option value="Brand Identity">Brand Identity</option>
-                    <option value="Digital Marketing">Digital Marketing</option>
-                    <option value="UI/UX Design">UI/UX Design</option>
-                    <option value="Other">Other</option>
+                    <option value="Web Design & Development">Web Design & Development</option>
+                    <option value="Branding & Creative Design">Branding & Creative Design</option>
+                    <option value="Video Editing & Multimedia">Video Editing & Multimedia</option>
+                    <option value="Administrative & Executive Support">Administrative & Executive Support</option>
+                    <option value="Emerging Technical Solutions">Emerging Technical Solutions</option>
+                    <option value="Custom Solution / Not Sure Yet">Custom Solution / Not Sure Yet</option>
                   </select>
                 </div>
               </div>
-
-              <div className="form-group-modern">
-                <label htmlFor="message">
-                  <i className="fas fa-comment-dots"></i> Your Message *
-                </label>
-                <textarea
-                  id="message" name="message" required
-                  placeholder="Tell us about your project..."
-                  value={form.message} onChange={handleChange}
-                ></textarea>
+              <div className="frow">
+                <div className="field full">
+                  <label htmlFor="message">Tell us about your project</label>
+                  <textarea
+                    id="message" name="message" required
+                    placeholder="A bit about your business, your goals, and what you're hoping to accomplish..."
+                    value={form.message} onChange={handleChange}
+                  ></textarea>
+                </div>
               </div>
 
-              <div className="checkbox-group">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox" name="newsletter"
-                    checked={form.newsletter} onChange={handleChange}
-                  />
-                  <span className="checkbox-text">
-                    <i className="fas fa-envelope-open-text"></i>
-                    Subscribe to our newsletter for design tips and updates
-                  </span>
-                </label>
-              </div>
-
-              <button type="submit" className="btn btn-primary-modern btn-lg btn-block" disabled={sending}>
-                <span className="btn-text">{sending ? 'Sending...' : 'Send Message'}</span>
-                <span className="btn-icon">
-                  <i className={`fas ${sending ? 'fa-spinner fa-spin' : 'fa-paper-plane'}`}></i>
-                </span>
+              <button type="submit" className="submit-btn" disabled={sending}>
+                {sending ? 'Sending...' : 'Send Message'}
               </button>
-
-              <div className="form-note">
-                <i className="fas fa-shield-alt"></i>
-                Your information is secure and will never be shared
-              </div>
+              <p className="form-note">We typically respond within 1–2 business days.</p>
             </form>
           </div>
 
-          {/* Contact Info Sidebar */}
-          <div className="contact-info-wrapper" data-aos="fade-left" data-aos-delay="200">
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <i className="fas fa-envelope"></i>
-              </div>
-              <div className="contact-card-content">
-                <h3>Email Us</h3>
-                <p>Send us an email anytime</p>
-                <a href="mailto:hello@mdongphets.com" className="contact-link">
-                  hello@mdongphets.com
+          <div className="info-side">
+            <div className="info-block">
+              <div className="info-label">Email Us</div>
+              <div className="info-val"><a href="mailto:mustarddigitalsolutions@gmail.com">mustarddigitalsolutions@gmail.com</a></div>
+              <div className="info-sub">For general inquiries, partnerships, and project requests.</div>
+            </div>
+
+            <div className="info-block">
+              <div className="info-label">Call or Message Us</div>
+              <div className="info-val">(032) 517-3074</div>
+              <div className="info-sub" style={{ marginTop: 8 }}>Mobile: +63 949 674 922</div>
+            </div>
+
+            <div className="info-block">
+              <div className="info-label">Based In</div>
+              <div className="info-val">Cebu, Philippines, 6000</div>
+              <div className="info-sub">Serving clients worldwide.</div>
+            </div>
+
+            <div className="info-block">
+              <div className="info-label">Follow Along</div>
+              <div className="social-row">
+                <a className="social-icon" href="https://www.facebook.com/profile.php?id=61588532360783" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a className="social-icon" href="https://www.linkedin.com/company/mustard-digitals/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a className="social-icon" href="https://www.instagram.com/mustard_digitals" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a className="social-icon" href="https://wa.me/639949674922" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  <i className="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
 
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <i className="fas fa-phone-alt"></i>
-              </div>
-              <div className="contact-card-content">
-                <h3>Call Us</h3>
-                <p>Mon-Fri from 9am to 6pm</p>
-                <a href="tel:+1234567890" className="contact-link">
-                  +1 (234) 567-8900
-                </a>
-              </div>
-            </div>
+            <div className="divider"></div>
 
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-              <div className="contact-card-content">
-                <h3>Visit Us</h3>
-                <p>Come say hello at our office</p>
-                <address className="contact-address">
-                  123 Creative Street<br />
-                  San Francisco, CA 94102<br />
-                  United States
-                </address>
-              </div>
-            </div>
-
-            <div className="response-time-card">
-              <div className="response-icon">
-                <i className="fas fa-clock"></i>
-              </div>
-              <h4>Quick Response Time</h4>
-              <p>We typically respond within <strong>24 hours</strong> on business days</p>
+            <div className="trial-box">
+              <span className="trial-tag">🌱 Plant Phase</span>
+              <p>Not sure where to start? Ask about our free 2-hour trial task — a low-risk way to experience how our team works before committing to a full project.</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* FAQ Section */}
-      <section className="contact-faq-section">
-        <div className="section-header" data-aos="fade-up">
-          <h2 className="section-title-modern">Frequently Asked Questions</h2>
-          <p className="section-subtitle">Quick answers to common questions</p>
-        </div>
-
-        <div className="faq-grid">
-          {[
-            { icon: 'fa-question-circle', q: 'How long does a typical project take?', a: 'Project timelines vary based on scope. Simple websites take 4-6 weeks, while complex projects can take 3-6 months. We\'ll provide a detailed timeline during consultation.' },
-            { icon: 'fa-dollar-sign', q: 'What are your pricing structures?', a: 'We offer both project-based and retainer pricing. Rates depend on project complexity, timeline, and required services. Contact us for a custom quote.' },
-            { icon: 'fa-handshake', q: 'Do you work with startups?', a: 'Absolutely! We love working with startups and offer flexible pricing options. We understand the unique challenges and can scale our services to your needs.' },
-            { icon: 'fa-globe', q: 'Do you work remotely?', a: 'Yes! We work with clients worldwide. Our remote collaboration tools ensure seamless communication regardless of your location.' },
-          ].map((faq, i) => (
-            <div className="faq-card" key={i} data-aos="fade-up" data-aos-delay={`${(i + 1) * 100}`}>
-              <div className="faq-icon">
-                <i className={`fas ${faq.icon}`}></i>
-              </div>
-              <h3>{faq.q}</h3>
-              <p>{faq.a}</p>
+      {/* What Happens Next */}
+      <div className="contact-next">
+        <div className="section-eyebrow">What Happens Next</div>
+        <h2 className="section-title-modern" style={{ fontSize: 'clamp(26px,3.5vw,38px)' }}>From message to first call.</h2>
+        <div className="next-grid">
+          {NEXT_STEPS.map(step => (
+            <div className="next-card" key={step.num} data-aos="fade-up" data-aos-delay={`${(step.num - 1) * 100}`}>
+              <div className="next-num">{step.num}</div>
+              <h4>{step.title}</h4>
+              <p>{step.desc}</p>
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="cta-modern" data-aos="fade-up">
-        <div className="cta-content">
-          <div className="cta-icon">
-            <i className="fas fa-rocket"></i>
-          </div>
-          <h2>Not sure where to start?</h2>
-          <p>Try us out risk-free with a free 2-hour task — no commitment needed.</p>
-          <div className="svc-cta-btns">
-            <button className="btn btn-primary-modern btn-lg" onClick={() => navigate('/free-trial')}>
-              Claim Free Trial <i className="fas fa-arrow-right"></i>
-            </button>
-            <button className="btn btn-outline btn-lg" onClick={() => navigate('/services')}
-              style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}>
-              <i className="fas fa-th"></i> View Our Services
-            </button>
+      {/* FAQ mini */}
+      <section className="contact-faqmini">
+        <div className="faqmini-wrap">
+          <div className="section-eyebrow" style={{ justifyContent: 'center' }}>Before You Reach Out</div>
+          <h2 className="section-title-modern" style={{ fontSize: 'clamp(24px,3.5vw,34px)', textAlign: 'center' }}>Quick answers.</h2>
+          <div className="faq-list">
+            {FAQS.map((faq, i) => (
+              <div className="faq-item" key={i} data-aos="fade-up" data-aos-delay={`${i * 100}`}>
+                <div className="faq-q">{faq.q}</div>
+                <div className="faq-a">{faq.a}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -40,7 +40,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/"               element={<Home />} />
-        {/* <Route path="/portfolio"      element={<Portfolio />} /> 
+        {/* <Route path="/portfolio"      element={<Portfolio />} />
         <Route path="/portfolio/:id"  element={<PortfolioDetail />} />*/}
         <Route path="/services"                      element={<Services />} />
         <Route path="/services/web-design"          element={<WebDesign />} />
@@ -49,7 +49,7 @@ export default function App() {
         <Route path="/services/content-creation"    element={<ContentCreation />} />
         <Route path="/services/admin-support"       element={<AdminSupport />} />
         <Route path="/about"          element={<About />} />
-       {/* <Route path="/contact"        element={<Contact />} /> */}
+        <Route path="/contact"        element={<Contact />} />
         <Route path="/free-trial"     element={<FreeTrial />} />
         <Route path="*"               element={<NotFound />} />
       </Routes>
