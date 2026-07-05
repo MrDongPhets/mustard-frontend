@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/style-modern.css';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
+import SEO from '../components/SEO.jsx';
 
 //TEAM ASSETS
 import arvieImage from '../assets/aboutpage_team/arvie.png'; 
@@ -75,10 +76,7 @@ const TEAM = [
 export default function About() {
   const navigate = useNavigate();
   
-  useEffect(() => { 
-    document.title = 'About | MUSTARD Digitals'; 
-    window.scrollTo(0, 0); 
-  }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   // --- Auto-Scroll & Drag Carousel Logic ---
   const carouselRef = useRef(null);
@@ -136,6 +134,11 @@ export default function About() {
 
   return (
     <main>
+      <SEO
+        title="About"
+        description="Mustard Digitals is a Philippines-based digital solutions team serving entrepreneurs, startups, and growing businesses worldwide — built to deliver great work and develop great people."
+        path="/about"
+      />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="hero-modern about-hero-modern">

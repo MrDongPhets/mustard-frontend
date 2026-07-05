@@ -12,8 +12,9 @@
  *  testimonials [{ initials, text, name, role }]
  */
 
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import SEO from '../../components/SEO.jsx';
 import '../../styles/service-detail.css';
 
 /* ── Reusable FAQ accordion ──────────────────────────────── */
@@ -63,10 +64,11 @@ export default function ServiceDetailLayout({
   testimonials,
 }) {
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${hero.title} | MUSTARD Digitals`; }, [hero.title]);
+  const location = useLocation();
 
   return (
     <main>
+      <SEO title={hero.title} description={hero.desc} path={location.pathname} />
       {/* Hero */}
       <section className="service-hero-section">
         <div className="service-hero-content" data-aos="fade-up">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { submitFreeTrial } from '../api/index.js';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
+import SEO from '../components/SEO.jsx';
 import '../styles/free-trial.css';
 
 const INITIAL = {
@@ -10,8 +11,6 @@ const INITIAL = {
 };
 
 export default function FreeTrial() {
-  useEffect(() => { document.title = 'Free Trial | MUSTARD Digitals'; }, []);
-
   const [form, setForm]       = useState(INITIAL);
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -52,6 +51,11 @@ export default function FreeTrial() {
 
   return (
     <>
+    <SEO
+      title="Free Trial"
+      description="Claim your free 2-hour trial task with MUSTARD Digitals — real work, zero commitment, a low-risk way to see how our team works before you commit to a full project."
+      path="/free-trial"
+    />
     {success && (
       <div className="ft-toast">
         <div className="ft-toast-inner">

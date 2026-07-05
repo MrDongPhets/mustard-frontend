@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { submitContact } from '../api/index.js';
 import { PORTFOLIO_ITEMS } from '../data/portfolio.js';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 import BrandMarquee from '../components/BrandMarquee.jsx';
+import SEO from '../components/SEO.jsx';
 import mustardSeed from "../assets/mustard-seed.png";
 import '../styles/style-modern.css';
 import Pricing from '../components/Pricing.jsx';
@@ -62,7 +63,6 @@ function getInitials(name) {
 
 export default function Home() {
   const navigate = useNavigate();
-  useEffect(() => { document.title = 'MUSTARD Digitals'; }, []);
 
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
@@ -94,6 +94,11 @@ export default function Home() {
   const stats = STATIC_STATS;
   return (
     <main>
+      <SEO
+        title="MUSTARD Digitals"
+        description="MUSTARD Digitals is a Philippines-based digital solutions team helping businesses worldwide grow through web design, branding, video production, and virtual support."
+        path="/"
+      />
       {/* Hero */}
       <section className="hero-modern">
          <HeroCanvas /> 

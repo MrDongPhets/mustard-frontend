@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { PORTFOLIO_ITEMS, PORTFOLIO_CATEGORIES } from '../data/portfolio.js';
+import SEO from '../components/SEO.jsx';
 import '../styles/portfolio.css';
 
 function getCategoryIcon(cat) {
@@ -40,7 +41,6 @@ function PeekCard({ currentSrc, currentAlt, prevSrc, prevAlt, direction, isAnima
 }
 
 export default function Portfolio() {
-  useEffect(() => { document.title = 'Portfolio | MUSTARD Digitals'; }, []);
   const [allItems] = useState(PORTFOLIO_ITEMS);
   const [categories] = useState(PORTFOLIO_CATEGORIES);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -125,6 +125,11 @@ export default function Portfolio() {
 
   return (
     <main>
+      <SEO
+        title="Portfolio"
+        description="Browse MUSTARD Digitals' portfolio of branding, web design, video, and content creation projects delivered for entrepreneurs and businesses worldwide."
+        path="/portfolio"
+      />
       {/* Portfolio Hero */}
       <section className="portfolio-hero">
         <div className="portfolio-hero-content" data-aos="fade-up">

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { submitContact } from '../api/index.js';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
+import SEO from '../components/SEO.jsx';
 import '../styles/contact.css';
 
 const NEXT_STEPS = [
@@ -37,8 +38,6 @@ const FAQS = [
 ];
 
 export default function Contact() {
-  useEffect(() => { document.title = 'Contact | MUSTARD Digitals'; }, []);
-
   const [form, setForm] = useState({ name: '', email: '', company: '', service: '', message: '' });
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -66,6 +65,11 @@ export default function Contact() {
 
   return (
     <main>
+      <SEO
+        title="Contact"
+        description="Get in touch with MUSTARD Digitals. Tell us about your project and we'll follow up to schedule a free discovery call — or claim a free 2-hour trial task."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="contact-hero-modern">
         <HeroCanvas />

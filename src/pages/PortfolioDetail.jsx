@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { PORTFOLIO_ITEMS } from '../data/portfolio.js';
+import SEO from '../components/SEO.jsx';
 import '../styles/portfolio-detail.css';
 
 function getCategoryIcon(cat) {
@@ -25,16 +25,13 @@ export default function PortfolioDetail() {
     ? PORTFOLIO_ITEMS.filter(p => p.category === item.category && p.id !== id).slice(0, 3)
     : [];
 
-  useEffect(() => {
-    if (item) document.title = `${item.title} | MUSTARD Digitals`;
-  }, [item]);
-
   if (!item) {
     return (
       <main style={{ textAlign: 'center', padding: '120px 20px', color: 'var(--muted)' }}>
+        <SEO title="Project Not Found" description="This project doesn't exist or is no longer available." path={`/portfolio/${id}`} noindex />
         <i className="fas fa-folder-open" style={{ fontSize: '80px', marginBottom: '24px', opacity: 0.3 }}></i>
         <h2>Project Not Found</h2>
-        <p style={{ marginBottom: '24px' }}>{error || 'This project doesn\'t exist or is no longer available.'}</p>
+        <p style={{ marginBottom: '24px' }}>This project doesn&apos;t exist or is no longer available.</p>
         <button className="btn btn-primary-modern" onClick={() => navigate('/portfolio')}>
           <i className="fas fa-arrow-left"></i> Back to Portfolio
         </button>
@@ -48,6 +45,12 @@ export default function PortfolioDetail() {
 
   return (
     <main>
+      <SEO
+        title={item.title}
+        description={item.description || `${item.title} — a ${item.category} project by MUSTARD Digitals.`}
+        path={`/portfolio/${item.id}`}
+        image={item.image_url}
+      />
       {/* Hero */}
       <section className="cs-hero">
         <img

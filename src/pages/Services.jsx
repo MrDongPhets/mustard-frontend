@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
+import SEO from '../components/SEO.jsx';
 import '../styles/services.css';
 
 const SERVICES = [
@@ -78,10 +79,13 @@ export default function Services() {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
 
-  useEffect(() => { document.title = 'Services | MUSTARD Digitals'; }, []);
-
   return (
     <main>
+      <SEO
+        title="Services"
+        description="Web design, branding, video editing, content creation, and administrative support — one coordinated digital team for growing businesses, instead of five different vendors."
+        path="/services"
+      />
       {/* HERO */}
       <section className="svc-hero">
         <HeroCanvas />
