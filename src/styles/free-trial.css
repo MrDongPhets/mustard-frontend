@@ -47,7 +47,11 @@
   line-height: 1.1;
   margin-bottom: 16px;
 }
-.ft-hero h1 span { color: var(--primary); }
+.ft-hero h1 .ft-hero-accent { color: var(--primary); white-space: nowrap; }
+
+@media (min-width: 640px) {
+  .ft-hero h1 .ft-hero-line1 { white-space: nowrap; }
+}
 
 .ft-hero-sub {
   font-size: 15px;
