@@ -162,7 +162,7 @@ export default function Contact() {
           <div className="info-side">
             <div className="info-block">
               <div className="info-label">Email Us</div>
-              <div className="info-val"><a href="mailto:mustarddigitalsolutions@gmail.com">mustarddigitalsolutions@gmail.com</a></div>
+              <div className="info-val"><a href="mailto:hello@mustarddigitals.com">hello@mustarddigitals.com</a></div>
               <div className="info-sub">For general inquiries, partnerships, and project requests.</div>
             </div>
 
