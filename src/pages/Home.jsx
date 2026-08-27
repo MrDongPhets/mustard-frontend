@@ -317,7 +317,7 @@ export default function Home() {
 
             <div className="contact-details">
               {[
-                { icon: 'fa-envelope', label: 'Email', content: <a href="mailto:mustarddigitalsolutions@gmail.com">mustarddigitalsolutions@gmail.com</a> },
+                { icon: 'fa-envelope', label: 'Email', content: <a href="mailto:hello@mustarddigitals.com">hello@mustarddigitals.com</a> },
                 { icon: 'fa-phone', label: 'Phone', content: <a href="tel: +62 9949674922">+63 9949674922</a> },
       
               ].map(item => (
