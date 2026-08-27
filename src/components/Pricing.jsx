@@ -82,7 +82,7 @@ const rows = [
 
   {
     label: 'Free trial available',
-    gold: '2-hour free trial',
+    gold: '4-hour free trial',
     inhouse: { emptyCheck: true },
     freelancer: { emptyCheck: true },
   },

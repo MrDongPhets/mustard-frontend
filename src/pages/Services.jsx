@@ -45,7 +45,7 @@ const SERVICES = [
 const PROCESS = [
   {
     icon: 'fa-seedling', phase: 'Phase 1', title: 'Plant',
-    desc: 'Book a call to discuss your goals, project requirements, and how our team can best support your business. Not ready to commit? Start with a free 2-hour trial task.',
+    desc: 'Book a call to discuss your goals, project requirements, and how our team can best support your business. Not ready to commit? Start with a free 4-hour trial task.',
     badge: true,
   },
   {
@@ -166,7 +166,7 @@ export default function Services() {
                 <p className="svc-process-desc">{p.desc}</p>
                 {p.badge && (
                   <span className="svc-trial-badge">
-                    <i className="fas fa-gift"></i> Free 2-hour trial task available
+                    <i className="fas fa-gift"></i> Free 4-hour trial task available
                   </span>
                 )}
               </div>
@@ -226,7 +226,7 @@ export default function Services() {
             <i className="fas fa-rocket"></i>
           </div>
           <h2>Let's find the right fit for your business.</h2>
-          <p>Book a free discovery call — or start with a free 2-hour trial task — and tell us what you're working on.</p>
+          <p>Book a free discovery call — or start with a free 4-hour trial task — and tell us what you're working on.</p>
           <div className="svc-cta-btns">
             <button className="btn btn-primary-modern btn-lg" onClick={() => navigate('/free-trial')}>
               Claim Free Trial <i className="fas fa-arrow-right"></i>
