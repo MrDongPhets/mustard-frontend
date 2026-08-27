@@ -53,7 +53,7 @@ export default function FreeTrial() {
     <>
     <SEO
       title="Free Trial"
-      description="Claim your free 2-hour trial task with MUSTARD Digitals, real work, zero commitment, a low-risk way to see how our team works before you commit to a full project."
+      description="Claim your free 4-hour trial task with MUSTARD Digitals, real work, zero commitment, a low-risk way to see how our team works before you commit to a full project."
       path="/free-trial"
     />
     {success && (
@@ -92,14 +92,14 @@ export default function FreeTrial() {
           <div className="ft-eyebrow">
             <span className="ft-eyebrow-dot" /> Next Step · After Your Call
           </div>
-          <h1><span className="ft-hero-line1">Let&apos;s Build Your <span className="ft-hero-accent">Free 2-Hour</span></span><br />Trial Task</h1>
+          <h1><span className="ft-hero-line1">Let&apos;s Build Your <span className="ft-hero-accent">Free 4-Hour</span></span><br />Trial Task</h1>
           <p className="ft-hero-sub">
             Thanks for hopping on a call with us. Now let&apos;s turn that conversation into a real deliverable,
-            tell us about the one task you&apos;d like us to complete, free, within 2 hours.{' '}
+            tell us about the one task you&apos;d like us to complete, free, within 4 hours.{' '}
             <b>No payment, no commitment, no risk.</b> This is how we earn your trust before you spend a single dollar.
           </p>
           <div className="ft-badges">
-            <span className="ft-badge"><i className="fas fa-clock"></i> 2 Hours Free</span>
+            <span className="ft-badge"><i className="fas fa-clock"></i> 4 Hours Free</span>
             <span className="ft-badge"><i className="fas fa-credit-card"></i> No Payment Required</span>
             <span className="ft-badge"><i className="fas fa-hand-paper"></i> Zero Commitment</span>
             <span className="ft-badge"><i className="fas fa-building"></i> One Trial Per Business</span>
@@ -116,8 +116,8 @@ export default function FreeTrial() {
         <div className="ft-steps">
           {[
             { n: '01', active: true,  title: 'Discovery Call',                desc: 'We talked through your business, your goals, and what kind of support you\'re looking for.' },
-            { n: '02', active: true,  title: 'Submit Your Trial Task',        desc: 'Tell us about the one task you\'d like done, free, within 2 hours. Fill out the form below, no need to book anything else.' },
-            { n: '03', active: false, title: 'We Deliver. You Review.',        desc: 'Your task is completed within 2 trial hours. Review the output and experience our quality firsthand.' },
+            { n: '02', active: true,  title: 'Submit Your Trial Task',        desc: 'Tell us about the one task you\'d like done, free, within 4 hours. Fill out the form below, no need to book anything else.' },
+            { n: '03', active: false, title: 'We Deliver. You Review.',        desc: 'Your task is completed within 4 trial hours. Review the output and experience our quality firsthand.' },
             { n: '04', active: false, title: 'Choose Your Package. Grow.',     desc: 'Happy with the results? Choose the hourly package that fits, 20, 40, or 80 hours. No pressure.' },
           ].map(s => (
             <div className="ft-step" key={s.n}>

@@ -117,7 +117,7 @@ export default function Home() {
           </div>
           <div className="hero-gap">
            <p className="button-note" data-aos="fade-up" data-aos-delay="500">
-             2 hours <span className="hero-accent-word">•</span> Real work <span className="hero-accent-word">•</span> Zero commitment
+             4 hours <span className="hero-accent-word">•</span> Real work <span className="hero-accent-word">•</span> Zero commitment
             </p>
             </div>
         </div>
@@ -296,7 +296,7 @@ export default function Home() {
   <div className="text-center" data-aos="fade-up" style={{ marginTop: '1px' }}>
     <div className="hero-cta-buttons" data-aos="fade-up" data-aos-delay="400" >
             <button className="btn btn-primary-modern" onClick={() => navigate('/contact')}>          
-            Start Your Free 2-Hour Trial <i className="fas fa-arrow-right"></i>
+            Start Your Free 4-Hour Trial <i className="fas fa-arrow-right"></i>
             </button>
     </div>
       </div>

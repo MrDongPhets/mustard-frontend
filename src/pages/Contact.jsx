@@ -67,7 +67,7 @@ export default function Contact() {
     <main>
       <SEO
         title="Contact"
-        description="Get in touch with MUSTARD Digitals. Tell us about your project and we'll follow up to schedule a free discovery call, or claim a free 2-hour trial task."
+        description="Get in touch with MUSTARD Digitals. Tell us about your project and we'll follow up to schedule a free discovery call, or claim a free 4-hour trial task."
         path="/contact"
       />
       {/* Hero */}
@@ -200,7 +200,7 @@ export default function Contact() {
 
             <div className="trial-box">
               <span className="trial-tag">🌱 Plant Phase</span>
-              <p>Not sure where to start? Ask about our free 2-hour trial task, a low-risk way to experience how our team works before committing to a full project.</p>
+              <p>Not sure where to start? Ask about our free 4-hour trial task, a low-risk way to experience how our team works before committing to a full project.</p>
             </div>
           </div>
         </div>
