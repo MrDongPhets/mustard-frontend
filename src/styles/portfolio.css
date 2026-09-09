@@ -1,802 +1,581 @@
-/* ==========================================
-   MODERN PORTFOLIO PAGE STYLES
-   ========================================== */
+/* ============================================================
+   MUSTARD DIGITALS - PORTFOLIO PAGE STYLES
+   Document Name: Portfolio Page Stylesheet
+   Version: v1.1
+   Last Updated: 09 Sep 2026
+   Prepared By: Sergette Angela Napoles (Wibiz)
 
-/* Portfolio Hero */
-.portfolio-hero {
-  background: var(--dark);
-  color: white;
-  padding: 120px min(2rem, 8%) 80px;
-  text-align: center;
-  border-radius: 0 0 40px 40px;
-  position: relative;
-  overflow: hidden;
+   Restyled from the team's portfolio-style.css to match the
+   Mustard homepage design system. It reuses the global tokens
+   defined in the homepage CSS (--primary, --dark, --text, --card,
+   --border, --muted, --accent, etc.) so it inherits light/dark
+   theming with no extra work.
+
+   Everything is namespaced 'pf-' so it never collides with the
+   homepage's own classes. The chatbot styles from the original
+   are intentionally omitted (separate future build).
+
+   Changelog
+   Version  Date         Author                Changes
+   v1.0     09 Sep 2026  Sergette A. Napoles    Initial release
+   v1.1     09 Sep 2026  Sergette A. Napoles    Fixed mobile case-study banner: tag pills
+                                                were stretching into tall ovals and stacking
+                                                in a column. Banner now stacks cleanly, tags
+                                                stay pill-shaped and wrap as a row, title/
+                                                summary use full width.
+   ============================================================ */
+
+/* ---------- Local aliases onto the global Mustard tokens ----------
+   Defined locally so this file is portable, but pointing at the
+   same variables the homepage sets. Override here if needed. */
+.pf-page {
+  --pf-gold: var(--primary, #EBB92F);
+  --pf-gold-dark: var(--primary-dark, #d4a425);
+  --pf-gold-soft: var(--accent-2, #FFF9E6);
+  --pf-ink: var(--text, #15161E);
+  --pf-ink-deep: var(--dark, #15161E);
+  --pf-surface: var(--bg, #ffffff);
+  --pf-card: var(--card, #f9f9f8);
+  --pf-muted: var(--muted, #6b6762);
+  --pf-border: var(--border, #e5e4e1);
+  --pf-radius-sm: 10px;
+  --pf-radius-md: 18px;
+  --pf-radius-lg: 28px;
+  --pf-shadow-soft: var(--shadow, 0 10px 30px rgba(21, 22, 30, 0.08));
+  --pf-shadow-hover: 0 16px 44px rgba(21, 22, 30, 0.16);
+  --pf-container: 1160px;
+
+  color: var(--pf-ink);
 }
 
-.portfolio-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(235, 185, 47, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.portfolio-hero-content {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 60px;
-}
-
-.portfolio-hero h1 {
-  font-size: clamp(48px, 6vw, 72px);
-  font-weight: 800;
-  margin-bottom: 20px;
-  line-height: 1.1;
-}
-
-.portfolio-hero p {
-  font-size: 20px;
-  opacity: 0.9;
-  max-width: 600px;
+/* ---------- Layout primitives ---------- */
+.pf-container {
+  max-width: var(--pf-container);
   margin: 0 auto;
+  padding: 0 28px;
 }
+.pf-section { padding: 96px 0; position: relative; }
+.pf-bg-soft { background: var(--pf-card); }
+.text-center { text-align: center; }
 
-/* Portfolio Stats */
-.portfolio-stats {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  display: block;
-  font-size: 48px;
+.pf-section-head { max-width: 660px; margin: 0 0 52px; }
+.pf-section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.pf-section-head h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
   font-weight: 800;
-  color: var(--text);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  display: block;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* Featured Carousel Section */
-.featured-carousel-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 100px min(2rem, 8%);
-}
-
-.featured-carousel {
-  margin-top: 60px;
-}
-
-.carousel-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-slide {
-  min-width: 100%;
-  position: relative;
-}
-
-.carousel-image {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.carousel-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s;
-}
-
-.carousel-slide:hover .carousel-image img {
-  transform: scale(1.05);
-}
-
-.carousel-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(21, 22, 30, 0.95) 0%, transparent 100%);
-  padding: 60px 40px 40px;
-  color: white;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.carousel-slide:hover .carousel-overlay {
-  opacity: 1;
-}
-
-.carousel-category {
-  display: inline-block;
-  padding: 6px 16px;
-  background: var(--primary);
-  color: var(--dark);
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 16px;
-}
-
-.carousel-overlay h3 {
-  font-size: 36px;
-  font-weight: 800;
+  line-height: 1.2;
+  color: var(--pf-ink);
   margin-bottom: 12px;
 }
 
-.carousel-overlay p {
-  font-size: 16px;
-  opacity: 0.9;
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.carousel-link {
+/* ---------- Eyebrow (kept: it labels genuine section topics) ---------- */
+.pf-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-gold-dark);
+  margin-bottom: 16px;
 }
-
-.carousel-link:hover {
-  background: var(--primary);
-  color: var(--dark);
-  transform: translateX(4px);
+.pf-eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--pf-gold);
+  display: inline-block;
 }
+.pf-eyebrow.center { justify-content: center; }
 
-/* Carousel Buttons */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  color: var(--dark);
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s;
-  z-index: 10;
+/* ---------- Lead paragraph ---------- */
+.pf-lead {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--pf-muted);
+  max-width: 60ch;
 }
+.pf-lead.center { margin-left: auto; margin-right: auto; }
 
-.carousel-btn:hover {
-  background: var(--primary);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev-btn {
-  left: -30px;
-}
-
-.next-btn {
-  right: -30px;
-}
-
-/* Carousel Indicators */
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 32px;
-}
-
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--gray-300);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.indicator.active {
-  background: var(--primary);
-  width: 32px;
-  border-radius: 6px;
-}
-
-/* Filter Tabs Section */
-.portfolio-filters-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 60px min(2rem, 8%);
-}
-
-.filter-tabs {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 24px;
-  background: var(--card);
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(21, 22, 30, 0.06);
-}
-
-.filter-tab {
-  padding: 12px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-  font-size: 14px;
-  background: transparent;
-  border: 2px solid var(--border);
-  transition: all 0.3s;
+/* ---------- Buttons (pill, matching homepage .btn-primary-modern) ---------- */
+.pf-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
-
-.filter-tab:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  transform: translateY(-2px);
-}
-
-.filter-tab.active {
-  background: var(--primary);
-  color: var(--dark);
-  border-color: var(--primary);
-}
-
-/* Portfolio Section */
-.portfolio-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 min(2rem, 8%) 100px;
-}
-
-.portfolio-count {
-  text-align: center;
-  margin-bottom: 60px;
-  font-size: 18px;
-  color: var(--muted);
-}
-
-.count-number {
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--primary);
-  margin-right: 8px;
-}
-
-/* Portfolio Grid - Masonry Style */
-.portfolio-grid-masonry {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 32px;
-  margin-bottom: 60px;
-}
-
-.portfolio-card {
-  opacity: 0;
-  animation: fadeInUp 0.6s forwards;
-  transition: transform 0.3s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-.portfolio-card-image {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(21, 22, 30, 0.1);
-  cursor: pointer;
-}
-
-.portfolio-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s;
-}
-
-.portfolio-card:hover .portfolio-card-image img {
-  transform: scale(1.1);
-}
-
-.portfolio-card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(21, 22, 30, 0.95) 0%, rgba(21, 22, 30, 0.5) 50%, transparent 100%);
-  display: flex;
-  align-items: flex-end;
-  padding: 32px;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.portfolio-card:hover .portfolio-card-overlay {
-  opacity: 1;
-}
-
-.overlay-content {
-  color: white;
-  width: 100%;
-}
-
-.portfolio-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  background: var(--primary);
-  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 30px;
   border-radius: 50px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.pf-btn-primary {
+  background: linear-gradient(135deg, var(--pf-gold) 0%, var(--pf-gold-dark) 100%);
+  color: var(--pf-ink-deep);
+  box-shadow: var(--pf-shadow-soft);
+}
+.pf-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(235, 185, 47, 0.4);
+  color: var(--pf-ink-deep);
 }
 
-.overlay-content h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.pf-hero {
+  padding: 72px 0 60px;
+  background: var(--pf-ink-deep);
+  position: relative;
+  overflow: hidden;
+}
+.pf-hero .pf-container { position: relative; z-index: 2; }
+.pf-hero-title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--pf-ink);
+  margin-bottom: 22px;
+  max-width: 18ch;
+}
+.pf-hero-lead { font-size: 1.18rem; max-width: 62ch; margin-top: 8px; }
+
+/* Signature diagonal shard - the one bold flourish, gold, low opacity */
+.pf-hero-shape {
+  position: absolute;
+  top: -120px;
+  right: -160px;
+  width: 460px;
+  height: 460px;
+  background: var(--pf-gold);
+  clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%);
+  opacity: 0.10;
+  z-index: 0;
 }
 
-.overlay-content p {
-  font-size: 14px;
-  opacity: 0.9;
-  margin-bottom: 16px;
+/* ============================================================
+   CASE STUDY CARDS
+   ============================================================ */
+.pf-case-card {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  overflow: hidden;
+  margin-bottom: 32px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.pf-case-card:hover { box-shadow: var(--pf-shadow-hover); transform: translateY(-3px);  border-color: var(--pf-gold);}
+
+/* Banner header - brand-tinted gradients (variants).
+   Forced to a single vertical column so tags, title, and summary
+   always stack top-to-bottom (never side-by-side), at every width. */
+.pf-case-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 44px;
+  color: #fff;
+  position: relative;
+}
+.pf-case-banner h3 {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  max-width: 100%;
+}
+.pf-case-banner > p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 560px;
+  margin: 0;
   line-height: 1.6;
 }
 
-.portfolio-btn {
+.cs-banner-a { background: linear-gradient(135deg, #EBB92F 0%, #b8860b 100%); }
+.cs-banner-b { background: linear-gradient(135deg, #2a2b35 0%, #15161E 100%); }
+.cs-banner-c { background: linear-gradient(135deg, #3a3834 0%, #15161E 100%); }
+.cs-banner-d { background: linear-gradient(135deg, #d4a425 0%, #8a6a12 100%); }
+.cs-banner-e { background: linear-gradient(135deg, #53504B 0%, #22201d 100%); }
+
+/* Tags - horizontal wrapping row of pills.
+   Each pill sizes to its own text and never stretches. */
+.pf-case-tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.pf-case-tag {
+  flex: 0 0 auto;          /* don't grow, don't shrink -> no stretched ovals */
+  align-self: flex-start;
+  width: auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 100px;
+  padding: 5px 12px;
+  line-height: 1.4;
+}
+
+.pf-case-body { padding: 36px 44px; }
+
+/* Stat row */
+.pf-case-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.pf-case-stat {
+  border-left: 3px solid var(--pf-gold);
+  padding-left: 14px;
+}
+.pf-case-stat-num {
+  display: block;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--pf-ink);
+  line-height: 1.1;
+}
+.pf-case-stat-label { font-size: 0.82rem; color: var(--pf-muted); }
+
+/* Two-column brief / delivered */
+.pf-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.pf-case-block h4 {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--pf-ink);
+  margin: 0 0 10px;
+}
+.pf-case-block p { color: var(--pf-muted); font-size: 0.94rem; line-height: 1.7; margin: 0; }
+
+.pf-case-research {
+  background: var(--pf-card);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-sm);
+  padding: 20px 24px;
+  margin-top: 24px;
+}
+.pf-case-research h4 { font-size: 0.9rem; margin-bottom: 8px; }
+.pf-case-research p { font-size: 0.88rem; }
+
+.pf-case-delivered { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pf-case-delivered li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--pf-muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+.pf-check {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--pf-gold-dark);
+  display: inline-flex;
+}
+.pf-check svg { width: 16px; height: 16px; }
+
+.pf-case-screenshot {
+  width: 100%;
+  border-radius: var(--pf-radius-sm);
+  margin-top: 28px;
+  border: 1px solid var(--pf-border);
+}
+
+/* Outbound link buttons */
+.pf-case-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.pf-link-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
   font-weight: 600;
-  font-size: 14px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border-radius: 100px;
+  border: 1.5px solid var(--pf-border);
+  color: var(--pf-ink);
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
+.pf-link-btn:hover { border-color: var(--pf-gold); background: var(--pf-gold-soft); color: var(--pf-ink);  border-color: var(--pf-gold); }
+.pf-link-btn svg { width: 14px; height: 14px; }
 
-.portfolio-btn:hover {
-  background: var(--primary);
-  color: var(--dark);
-  transform: translateX(4px);
+/* ============================================================
+   BRAND IDENTITY LIBRARY
+   ============================================================ */
+.pf-logo-frame {
+  border-radius: var(--pf-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--pf-border);
+  margin-top: 24px;
 }
+.pf-logo-frame:first-of-type { margin-top: 0; }
+.pf-logo-frame img { width: 100%; display: block; }
 
-/* Load More */
-.load-more-container {
-  text-align: center;
+/* ============================================================
+   VIDEO SAMPLES
+   ============================================================ */
+.pf-video-group { margin-bottom: 48px; }
+.pf-video-group:last-child { margin-bottom: 0; }
+.pf-video-group-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pf-ink);
+  margin-bottom: 18px;
 }
-
-/* Portfolio CTA */
-.portfolio-cta {
-  max-width: 1200px;
-  margin: 0 auto 100px;
-  padding: 80px min(2rem, 8%);
-  background: var(--gradient-dark);
-  border-radius: 30px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 20px 60px rgba(21, 22, 30, 0.3);
-}
-
-.portfolio-cta h2 {
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.portfolio-cta p {
-  font-size: 18px;
-  opacity: 0.9;
-  margin-bottom: 32px;
-}
-
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: 100px 20px;
-  color: var(--muted);
-}
-
-.empty-state i {
-  font-size: 80px;
-  margin-bottom: 24px;
-  opacity: 0.3;
-  color: var(--primary);
-}
-
-.empty-state h3 {
-  font-size: 32px;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.empty-state a {
-  color: var(--primary);
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .carousel-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-  }
-  
-  .prev-btn {
-    left: -25px;
-  }
-  
-  .next-btn {
-    right: -25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio-hero {
-    padding: 80px min(2rem, 8%) 60px;
-  }
-
-  .portfolio-stats {
-    gap: 40px;
-  }
-
-  .stat-number {
-    font-size: 36px;
-  }
-
-  .carousel-image {
-    height: 400px;
-  }
-
-  .carousel-overlay h3 {
-    font-size: 28px;
-  }
-
-  .carousel-btn {
-    display: none;
-  }
-
-  .portfolio-grid-masonry {
-    grid-template-columns: 1fr;
-  }
-
-  .portfolio-card-image {
-    height: 320px;
-  }
-
-  .filter-tabs {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-image {
-    height: 300px;
-  }
-
-  .carousel-overlay {
-    padding: 40px 24px 24px;
-  }
-
-  .carousel-overlay h3 {
-    font-size: 24px;
-  }
-}
-
-/* =============================================
-   PEEK CAROUSEL — per-image slide transition
-   Each card's image slides in/out individually.
-   Add this block to your portfolio.css
-   ============================================= */
-
-.peek-carousel-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.pf-video-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  padding: 20px 0 40px;
-  width: 100%;
 }
+.pf-video-row-spaced { margin-top: 40px; }
 
-/* ---- Stage: holds the 3 cards side by side, layout stays fixed ---- */
-.peek-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-  padding: 16px 60px;
-  box-sizing: border-box;
+.pf-video-item {
+  border-radius: var(--pf-radius-md);
+  overflow: hidden;
+  background: var(--pf-ink-deep);
+  box-shadow: var(--pf-shadow-soft);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-
-/* ---- Shared card base ---- */
-.peek-card {
+.pf-video-item:hover {
+  border-color: var(--pf-gold);
+  box-shadow: var(--pf-shadow-hover);
+  transform: translateY(-3px);
+}
+.pf-video {
   position: relative;
-  border-radius: 18px;
-  overflow: hidden;           /* clips the sliding images */
-  flex-shrink: 0;
-  transition:
-    transform   0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    opacity     0.5s ease,
-    box-shadow  0.5s ease;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--pf-ink-deep);
 }
-
-/* ---- Center (hero) card ---- */
-.peek-card--center {
-  width: 42%;
-  aspect-ratio: 4 / 3;
-  z-index: 2;
-  transform: scale(1.05);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.60);
-}
-
-/* ---- Side cards ---- */
-.peek-card--side {
-  width: 26%;
-  aspect-ratio: 4 / 3;
-  cursor: pointer;
-  opacity: 0.72;
-  z-index: 1;
-}
-
-.peek-card--side:hover {
-  opacity: 0.92;
-  transform: scale(1.03);
-}
-
-/* ---- Images inside cards ---- */
-.peek-img {
+.pf-video-vertical { aspect-ratio: 9 / 16; }
+.pf-video iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  border: none;
 }
+.pf-video-caption { padding: 16px 18px; background: var(--pf-surface); }
+.pf-video-caption h4 { font-weight: 700; font-size: 0.92rem; color: var(--pf-ink); margin: 0 0 4px; }
+.pf-video-caption p { font-size: 0.82rem; color: var(--pf-muted); margin: 0; }
 
-/* Incoming image: starts off-screen, slides into place */
-.peek-img--in {
-  z-index: 2;
-  /* Default (no animation yet): just sit in place */
-  transform: translateX(0);
-  transition: none;
+/* ============================================================
+   YOUTUBE CHANNEL MANAGEMENT
+   ============================================================ */
+.pf-yt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
-
-/* When animating — slide from the correct side */
-.peek-img--in.peek-img--animating.peek-img--in-next {
-  animation: slideInFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.peek-img--in.peek-img--animating.peek-img--in-prev {
-  animation: slideInFromLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* Outgoing image: sits behind and slides out */
-.peek-img--out {
-  z-index: 1;
-}
-.peek-img--out-next {
-  animation: slideOutToLeft  0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.peek-img--out-prev {
-  animation: slideOutToRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* ---- Keyframes ---- */
-@keyframes slideInFromRight {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0);    }
-}
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(0);     }
-}
-@keyframes slideOutToLeft {
-  from { transform: translateX(0);    }
-  to   { transform: translateX(-100%); }
-}
-@keyframes slideOutToRight {
-  from { transform: translateX(0);   }
-  to   { transform: translateX(100%); }
-}
-
-/* ---- Dark shade on side cards ---- */
-.peek-card-shade {
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 15, 35, 0.48);
-  border-radius: inherit;
-  z-index: 3;
-  transition: background 0.35s ease;
-}
-
-.peek-card--side:hover .peek-card-shade {
-  background: rgba(5, 15, 35, 0.18);
-}
-
-/* ---- Hover overlay on center card ---- */
-.peek-card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  background: linear-gradient(
-    to top,
-    rgba(5, 15, 40, 0.94) 0%,
-    rgba(5, 15, 40, 0.50) 50%,
-    transparent 100%
-  );
+.pf-yt-card {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px 24px 22px;
-  gap: 6px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity   0.35s ease,
-    transform 0.35s ease;
-}
-
-.peek-card--center:hover .peek-card-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.peek-badge {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 50px;
-  padding: 3px 10px;
-  width: fit-content;
-  backdrop-filter: blur(6px);
-}
-
-.peek-card-overlay h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 4px 0 0;
-  line-height: 1.3;
-}
-
-.peek-card-overlay p {
-  color: rgba(255,255,255,0.72);
-  font-size: 0.83rem;
-  line-height: 1.5;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.peek-link {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
-  margin-top: 4px;
-  transition: gap 0.25s ease;
+  gap: 18px;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-md);
+  padding: 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
-
-.peek-link:hover { gap: 10px; }
-
-/* ---- Nav buttons ---- */
-.peek-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-60%);
-  z-index: 10;
-  width: 44px;
-  height: 44px;
+.pf-yt-card:hover { box-shadow: var(--pf-shadow-hover); transform: translateY(-2px);  border-color: var(--pf-gold); }
+.pf-yt-icon {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(10px);
-  color: var(--primary);
-  font-size: 1rem;
-  cursor: pointer;
+  background: var(--pf-gold-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+}
+.pf-yt-icon svg { width: 24px; height: 24px; color: var(--pf-gold-dark); }
+.pf-yt-card h4 { font-size: 1rem; font-weight: 700; color: var(--pf-ink); margin: 0 0 2px; }
+.pf-yt-card p { font-size: 0.85rem; color: var(--pf-muted); margin: 0; }
+
+/* ============================================================
+   CLOSING CTA BAND
+   ============================================================ */
+.pf-cta-band {
+  background: linear-gradient(135deg, #15161E 0%, #2a2b35 100%);
+}
+.pf-cta-band h2 { color: #fff; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; margin-bottom: 14px; }
+.pf-cta-band .pf-lead { color: rgba(255, 255, 255, 0.8); }
+.pf-cta-lead { margin-bottom: 30px; }
+
+/* ============================================================
+   SCROLL REVEAL (ported from the original page)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.02s; }
+.reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.09s; }
+.reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.23s; }
+.reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.30s; }
+.reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.37s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px) {
+  .pf-yt-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.peek-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.5);
+@media (max-width: 720px) {
+  .pf-section { padding: 64px 0; }
+
+  /* Case study banner: stack cleanly, full-width title/summary */
+  .pf-case-banner { padding: 28px 22px; }
+  .pf-case-banner h3 { font-size: 1.4rem; }
+  .pf-case-banner > p { font-size: 0.95rem; max-width: 100%; }
+
+  /* Tags: keep as a wrapping row of true pills, not a stretched column */
+  .pf-case-tags {
+    flex-flow: row wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .pf-case-tag {
+    flex: 0 0 auto;
+    width: auto;
+    align-self: flex-start;
+    border-radius: 100px;
+    padding: 5px 12px;
+  }
+
+  .pf-case-body { padding: 28px 24px; }
+  .pf-case-grid { grid-template-columns: 1fr; }
+  .pf-case-stats { grid-template-columns: 1fr; gap: 14px; }
+
+  .pf-video-row { grid-template-columns: 1fr; }
+  .pf-yt-grid { grid-template-columns: 1fr; }
+  .pf-yt-card { flex-wrap: wrap; }
+  .pf-hero-title { font-size: 2.2rem; }
+}
+/* ============================================================
+   BRAND LIBRARY LIGHTBOX (click-to-zoom)
+   ============================================================ */
+
+/* Make the frame a real button without button chrome */
+.pf-logo-frame-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--pf-border);
+  background: none;
+  cursor: zoom-in;
+  position: relative;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.pf-logo-frame-btn:hover { box-shadow: var(--pf-shadow-hover); transform: translateY(-2px);  border-color: var(--pf-gold); }
+.pf-logo-frame-btn img { transition: transform 0.4s ease; }
+.pf-logo-frame-btn:hover img { transform: scale(1.02);  border-color: var(--pf-gold);}
+
+/* Small zoom badge, bottom-right */
+.pf-zoom-hint {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(21, 22, 30, 0.7);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.pf-logo-frame-btn:hover .pf-zoom-hint,
+.pf-logo-frame-btn:focus-visible .pf-zoom-hint { opacity: 1; }
+.pf-zoom-hint svg { width: 20px; height: 20px; }
+
+/* Overlay */
+.pf-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(21, 22, 30, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  cursor: zoom-out;
+  animation: pf-lightbox-in 0.2s ease;
+}
+@keyframes pf-lightbox-in { from { opacity: 0; } to { opacity: 1; } }
+
+.pf-lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--pf-radius-sm);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  transition: transform 0.12s ease-out;
+  transform-origin: center center;
+  touch-action: none; /* lets pinch/drag work on touch without the browser hijacking it */
+  user-select: none;
 }
 
-.peek-btn:active {
-  transform: translateY(-60%) scale(0.92);
+.pf-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.pf-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+.pf-lightbox-close svg { width: 22px; height: 22px; }
+
+@media (max-width: 720px) {
+  .pf-lightbox { padding: 16px; }
+  .pf-zoom-hint { opacity: 1; } /* no hover on touch, so show it */
 }
 
-.peek-btn--prev { left: 10px; }
-.peek-btn--next { right: 10px; }
-
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
-  .peek-stage { padding: 12px 44px; gap: 10px; }
-  .peek-card--center { width: 58%; }
-  .peek-card--side   { width: 22%; opacity: 0.6; }
-  .peek-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * { transition: none !important; opacity: 1 !important; transform: none !important; }
 }
-
-@media (max-width: 480px) {
-  .peek-stage { padding: 10px 36px; gap: 8px; }
-  .peek-card--center { width: 68%; }
-  .peek-card--side   { width: 16%; opacity: 0.5; }
+.pf-page a:focus-visible,
+.pf-page button:focus-visible {
+  outline: 3px solid var(--pf-gold);
+  outline-offset: 2px;
 }
