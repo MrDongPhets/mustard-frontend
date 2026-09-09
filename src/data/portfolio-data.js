@@ -240,8 +240,7 @@ export const BRAND_LIBRARY = {
     { src: alanco_full, alt: 'ALAN & CO real estate social media content design by Mustard Digitals' },
     { src: ecoway_trashvac, alt: 'EcoWay Pro and Trash Vac web and social media design by Mustard Digitals' },
     { src: terra_full, alt: 'TERRA Collection web and content design by Mustard Digitals' },
-    { src: logo_grid_3, alt: 'Logo design portfolio by Mustard Digitals' },
-    { src: branding_sheets_3, alt: 'Branding design portfolio by Mustard Digitals' },
+   
   ],
 };
 
