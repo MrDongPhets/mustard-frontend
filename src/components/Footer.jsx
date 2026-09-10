@@ -34,7 +34,7 @@ const LEGAL_LINKS = [
 
 const SOCIALS = [
   { label: 'Facebook',  icon: 'fa-facebook-f', url: 'https://www.facebook.com/profile.php?id=61588532360783' },
-  { label: 'Instagram', icon: 'fa-instagram',  url: 'https://www.instagram.com/mustard_digitals' },
+  { label: 'Instagram', icon: 'fa-instagram',  url: 'https://www.instagram.com/mustard.digitals/' },
   { label: 'LinkedIn',  icon: 'fa-linkedin-in',url: 'https://www.linkedin.com/company/mustard-digitals/' },
   { label: 'WhatsApp',  icon: 'fa-whatsapp',   url: 'https://wa.me/639949674922' },
 ];
