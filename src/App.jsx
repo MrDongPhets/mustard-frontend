@@ -9,7 +9,6 @@ import ScrollToTop  from './components/ScrollToTop';
 
 import Home            from './pages/Home';
 import Portfolio       from './pages/Portfolio';
-import PortfolioDetail from './pages/PortfolioDetail';
 import Services        from './pages/Services';
 import About           from './pages/About';
 import Contact         from './pages/Contact';
@@ -21,6 +20,10 @@ import Branding         from './pages/services/Branding';
 import VideoEditing     from './pages/services/VideoEditing';
 import ContentCreation  from './pages/services/ContentCreation';
 import AdminSupport     from './pages/services/AdminSupport';
+
+import Cookies from './pages/terms_policies/Cookies';
+import Terms from './pages/terms_policies/Terms';
+import Privacy from './pages/terms_policies/Privacy';
 
 function AOSInit() {
   const location = useLocation();
@@ -41,7 +44,6 @@ export default function App() {
       <Routes>
         <Route path="/"               element={<Home />} />
         <Route path="/portfolio"      element={<Portfolio />} />
-       {/*<Route path="/portfolio/:id"  element={<PortfolioDetail />} />*/}
         <Route path="/services"                      element={<Services />} />
         <Route path="/services/web-design"          element={<WebDesign />} />
         <Route path="/services/branding"            element={<Branding />} />
@@ -52,6 +54,10 @@ export default function App() {
         <Route path="/contact"        element={<Contact />} />
         <Route path="/free-trial"     element={<FreeTrial />} />
         <Route path="*"               element={<NotFound />} />
+        <Route path="/cookies"        element={<Cookies />} />
+        <Route path="/terms"          element={<Terms />} />
+        <Route path="/privacy"        element={<Privacy />} />
+       
       </Routes>
       <Footer />
       <ScrollToTop />

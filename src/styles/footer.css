@@ -1,0 +1,137 @@
+/* ============================================================
+   MUSTARD DIGITALS - FOOTER STYLES
+   Version: v1.1  |  Last Updated: 09 Sep 2026
+   Prepared By: Sergette Angela Napoles (Wibiz)
+
+   Changelog
+   v1.0  09 Sep 2026  Sergette A. Napoles  Initial release
+   v1.1  09 Sep 2026  Sergette A. Napoles  Left-aligned all columns to match
+                                           reference layout; added white-logo
+                                           filter utility.
+   ============================================================ */
+
+.site-footer {
+  background: var(--dark, #15161E);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: left;              /* force left alignment across the whole footer */
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 80px) 24px clamp(32px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: clamp(32px, 5vw, 56px);
+  text-align: left;
+}
+
+/* Brand column */
+.footer-brand { text-align: left; }
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  margin-bottom: 20px;
+  display: block;                /* sits flush left instead of inline-centered */
+}
+
+/* Make a dark/colored logo render white.
+   brightness(0) turns it solid black, invert(1) flips black -> white.
+   Use this class only if your logo file is NOT already white. */
+.footer-logo.is-white {
+  filter: brightness(0) invert(1);
+}
+
+.footer-blurb {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 340px;
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+.footer-socials { display: flex; gap: 12px; justify-content: flex-start; }
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.footer-socials a:hover {
+  background: var(--primary, #EBB92F);
+  color: var(--dark, #15161E);
+  transform: translateY(-2px);
+}
+
+/* Link columns */
+.footer-col { text-align: left; }
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 18px;
+  text-align: left;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;       /* links flush left */
+}
+.footer-col a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-align: left;
+}
+.footer-col a:hover { color: var(--primary, #EBB92F); }
+.footer-col a i { font-size: 0.85rem; color: var(--primary, #EBB92F); width: 16px; }
+
+/* Bottom bar */
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.footer-bottom-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-copy { font-size: 0.85rem; color: rgba(255, 255, 255, 0.55); margin: 0; }
+.footer-legal { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; flex-wrap: wrap; }
+.footer-legal a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-legal a:hover { color: var(--primary, #EBB92F); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer-container { grid-template-columns: 1fr; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+}
