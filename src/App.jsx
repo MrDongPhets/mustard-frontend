@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import Navbar       from './components/Navbar';
 import Footer       from './components/Footer';
 import ScrollToTop  from './components/ScrollToTop';
+import ChatWidget   from './components/ChatWidget';
 
 import Home            from './pages/Home';
 import Portfolio       from './pages/Portfolio';
@@ -61,6 +62,7 @@ export default function App() {
       </Routes>
       <Footer />
       <ScrollToTop />
+      <ChatWidget />
     </BrowserRouter>
   );
 }
