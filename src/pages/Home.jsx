@@ -351,7 +351,7 @@ export default function Home() {
   </a>
 
   <a
-    href="https://www.instagram.com/mustard_digitals"
+    href="https://www.instagram.com/mustard.digitals"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Instagram"
