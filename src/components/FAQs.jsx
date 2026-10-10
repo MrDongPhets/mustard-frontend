@@ -25,7 +25,7 @@ const faqItems = [
     question:
       'Is there really a free trial? What does it include?',
     answer:
-      'Yes, completely free. We offer a 2-hour trial so you can experience the quality of our work before making any commitment. After your discovery call, submit a real task from any of our service areas — graphics, video, admin, web, or tech and we’ll deliver real output within the trial hours. No payment required. No obligation to continue. Limited to one trial per business.',
+      'Yes, completely free. We offer a 4-hour trial so you can experience the quality of our work before making any commitment. After your discovery call, submit a real task from any of our service areas — graphics, video, admin, web, or tech and we’ll deliver real output within the trial hours. No payment required. No obligation to continue. Limited to one trial per business.',
   },
 
   {
@@ -46,7 +46,7 @@ const faqItems = [
     question:
       "I'm a small business — is Mustard Digitals right for me?",
     answer:
-      'Absolutely. Small businesses and entrepreneurs are exactly who we built this for. Our hourly package model means you only pay for what you need — no bloated agency retainers, no full-time hire overhead. Start with our free 2-hour trial and see the difference firsthand before committing to a package.',
+      'Absolutely. Small businesses and entrepreneurs are exactly who we built this for. Our hourly package model means you only pay for what you need — no bloated agency retainers, no full-time hire overhead. Start with our free 4-hour trial and see the difference firsthand before committing to a package.',
   },
 
  {
@@ -54,7 +54,7 @@ const faqItems = [
   answer: (
     <>
       <p>We follow a simple three-phase process we call Plant, Build, Grow.</p>
-      <p>🌱 Plant – You can book a call for a FREE 2-hour trial task or choose to proceed directly with a package. We start by discussing your goals, project requirements, trial task details (if applicable), and how our team can best support your business.</p>
+      <p>🌱 Plant – You can book a call for a FREE 4-hour trial task or choose to proceed directly with a package. We start by discussing your goals, project requirements, trial task details (if applicable), and how our team can best support your business.</p>
       <p>🔨 Build – Our team executes the agreed scope of work, providing updates and maintaining clear communication throughout the process.</p>
       <p>📈 Grow – We deliver the completed work, gather feedback, and discuss opportunities for ongoing support to help your business continue growing.</p>
     </>
