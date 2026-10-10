@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const SITE_URL = 'https://mustarddigitals.com';
+const SITE_URL = 'https://www.mustarddigitals.com';
 const DEFAULT_IMAGE = `${SITE_URL}/favicon.png`;
 const SITE_NAME = 'MUSTARD Digitals';
 

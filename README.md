@@ -1,6 +1,6 @@
 # MUSTARD Digitals — Frontend
 
-React + Vite frontend for [mustarddigitals.com](https://mustarddigitals.com). Fully static — no backend required for deployment.
+React + Vite frontend for [mustarddigitals.com](https://www.mustarddigitals.com). Fully static — no backend required for deployment.
 
 ## Tech Stack
 

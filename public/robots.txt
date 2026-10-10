@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mustarddigitals.com/sitemap.xml
+Sitemap: https://www.mustarddigitals.com/sitemap.xml

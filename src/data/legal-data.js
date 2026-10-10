@@ -32,7 +32,7 @@ export const COMPANY = {
   country: 'the Philippines',
   email: 'hello@mustarddigitals.com',
   phone: '+63 9949674922',
-  website: 'https://mustarddigitals.com',
+  website: 'https://www.mustarddigitals.com',
   address: '', // optional: add registered business address if you want it on record
   effectiveDate: '05 October 2026',
 };
