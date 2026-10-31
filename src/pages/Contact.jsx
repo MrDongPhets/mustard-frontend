@@ -49,12 +49,13 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [name]: value }));
   }
 
-  async function handleSubmit(e) {
+ async function handleSubmit(e) {
   e.preventDefault();
   setSending(true);
   setError('');
   try {
     await submitContact(form);
+    // Runs only when Web3Forms confirmed the message was sent
     trackEvent('generate_lead', { lead_type: 'contact_form' });
     setSuccess(true);
     setForm({ name: '', email: '', company: '', service: '', message: '' });
@@ -164,13 +165,13 @@ export default function Contact() {
           <div className="info-side">
             <div className="info-block">
               <div className="info-label">Email Us</div>
-              <div className="info-val">
-                  <a
-                    href="mailto:hello@mustarddigitals.com"
-                    onClick={() => trackEvent('contact_click', { method: 'email' })}
-                  >
-                    hello@mustarddigitals.com
-                  </a>
+             <div className="info-val">
+                <a
+                  href="mailto:hello@mustarddigitals.com"
+                  onClick={() => trackEvent('contact_click', { method: 'email' })}
+                >
+                  hello@mustarddigitals.com
+                </a>
               </div>
               <div className="info-sub">For general inquiries, partnerships, and project requests.</div>
             </div>
