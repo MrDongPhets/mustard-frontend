@@ -3,6 +3,7 @@ import { submitContact } from '../api/index.js';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 import SEO from '../components/SEO.jsx';
 import '../styles/contact.css';
+import { trackEvent } from '../data/analytics.js';
 
 const NEXT_STEPS = [
   {
@@ -48,20 +49,22 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [name]: value }));
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setSending(true);
-    setError('');
-    try {
-      await submitContact(form);
-      setSuccess(true);
-      setForm({ name: '', email: '', company: '', service: '', message: '' });
-    } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
-    } finally {
-      setSending(false);
-    }
+ async function handleSubmit(e) {
+  e.preventDefault();
+  setSending(true);
+  setError('');
+  try {
+    await submitContact(form);
+    // Runs only when Web3Forms confirmed the message was sent
+    trackEvent('generate_lead', { lead_type: 'contact_form' });
+    setSuccess(true);
+    setForm({ name: '', email: '', company: '', service: '', message: '' });
+  } catch (err) {
+    setError(err.message || 'Something went wrong. Please try again.');
+  } finally {
+    setSending(false);
   }
+}
 
   return (
     <main>
@@ -162,7 +165,14 @@ export default function Contact() {
           <div className="info-side">
             <div className="info-block">
               <div className="info-label">Email Us</div>
-              <div className="info-val"><a href="mailto:hello@mustarddigitals.com">hello@mustarddigitals.com</a></div>
+             <div className="info-val">
+                <a
+                  href="mailto:hello@mustarddigitals.com"
+                  onClick={() => trackEvent('contact_click', { method: 'email' })}
+                >
+                  hello@mustarddigitals.com
+                </a>
+              </div>
               <div className="info-sub">For general inquiries, partnerships, and project requests.</div>
             </div>
 
@@ -190,7 +200,14 @@ export default function Contact() {
                 <a className="social-icon" href="https://www.instagram.com/mustard_digitals" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a className="social-icon" href="https://wa.me/639949674922" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                 <a
+                  className="social-icon"
+                  href="https://wa.me/639949674922"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  onClick={() => trackEvent('contact_click', { method: 'whatsapp' })}
+                >
                   <i className="fab fa-whatsapp"></i>
                 </a>
               </div>

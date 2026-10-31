@@ -3,6 +3,7 @@ import { submitFreeTrial } from '../api/index.js';
 import HeroCanvas from '../components/ui/HeroCanvas.jsx';
 import SEO from '../components/SEO.jsx';
 import '../styles/free-trial.css';
+import { trackEvent } from '../data/analytics.js';
 
 const INITIAL = {
   name: '', email: '', businessName: '', country: '',
@@ -40,6 +41,8 @@ export default function FreeTrial() {
     setError('');
     try {
       await submitFreeTrial(form);
+      // Runs only when the backend confirmed the request was saved
+      trackEvent('generate_lead', { lead_type: 'free_trial' });
       setSuccess(true);
       setForm(INITIAL);
     } catch (err) {

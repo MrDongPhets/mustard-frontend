@@ -55,7 +55,7 @@ export async function submitFreeTrial(data) {
     body: JSON.stringify(data),
   });
   const result = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(result.error || 'Failed to submit trial request');
+    if (!res.ok) throw new Error(result.error || result.errors?.join(', ') || 'Failed to submit trial request');
   return result;
 }
 
